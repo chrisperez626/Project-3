@@ -21,6 +21,8 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.7"
   }
 }

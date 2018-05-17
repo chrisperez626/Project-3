@@ -1,0 +1,16 @@
+.navbar-header{
+    background-color: #0f6ba5;
+    height:50px;
+}
+
+.navbar-header .navbar-brand{
+    color:white;
+}
+
+.navbar-light .navbar-brand:hover{
+    color:white;
+}
+
+a .nav-link{
+    color:white;
+}

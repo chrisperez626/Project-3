@@ -1,0 +1,22 @@
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.preProject{
+    background-color:lightgray;
+}
+
+.currProject{
+    background-color: lightgreen;
+}
+
+.newProject{
+    background-color: azure;
+}
+
+.board-card{
+    width:50%;
+}
