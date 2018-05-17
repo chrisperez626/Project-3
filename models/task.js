@@ -1,17 +1,17 @@
 module.exports = function(sequelize, DataTypes){
-    var User = sequelize.define("Task", {
+    var Task = sequelize.define("Task", {
         taskname: {
-            type: DataTypes.String,
+            type: DataTypes.STRING,
             allowNull: false,
             validate:{
                 len: [1]
             }
         },
         status: {
-            type: DataTypes.string,
+            type: DataTypes.STRING,
             allowNull:false
         }        
     });
 
-    return User;
+    return Task;
 }
