@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./test.css";
-import classNames from "./test.css";
+import "./Whiteboard.css";
+import classNames from "./Whiteboard.css";
 
 export default class extends Component {
   static defaultProps = {
