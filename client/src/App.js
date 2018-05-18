@@ -1,19 +1,60 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, {Component} from "react";
+import {BrowserRouter as Router, Route } from "react-router-dom"; 
+import {Navbar, Home, SignupForm, Login} from "./components";
+import API from './utils/API';
+
 
 class App extends Component {
+  state = {
+    loggedIn: false,
+    user: null,
+    email: "",
+    password: "",
+  }
+
+  setUser = (user) => {
+    console.log("USER", user);
+    this.setState({
+      user,
+      loggedIn: true
+    })
+  }
+
+  handleLogout = () => {
+    API.logout()
+    .then(() => {
+      console.log("LOGOUT SUCCESS!");
+      this.setState({
+        user: null,
+        loggedIn: false
+      });
+    })
+    .catch(err => console.log(err))
+  }
+
+  componentDidMount() {
+    API.getCurrentUser()
+    .then(res => {
+      this.setState({
+        user: res.data.user,
+        loggedIn: res.data.user || false
+      })
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Router>
+        <div>
+          <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout}/>
+          <Route exact path="/" render={() => <Home loggedIn={this.state.loggedIn} user={this.state.user}/>} />
+          <Route exact path="/signup" component={SignupForm} />
+          <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      </Router>
     );
   }
 }
