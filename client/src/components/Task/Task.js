@@ -7,9 +7,11 @@ class Task extends Component{
     }
 
     render(){
-        <div className="card">
-            <h1></h1>
-        </div>
+        return(
+            <div className="card">
+                <strong>Create database</strong>
+            </div>
+        )
     }
 }
 export default Task

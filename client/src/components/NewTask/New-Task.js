@@ -1,9 +1,11 @@
 import React from 'react';
+import Task from '../Task'
 import './New-Task.css';
 
 class NewTask extends React.Component {
     state = {
-        NewTask: false
+        NewTask: false,
+        divCount: 0
     }
 
     newTask = () =>{
@@ -11,10 +13,9 @@ class NewTask extends React.Component {
     }
 
     submitTask = () =>{
-        
-
         this.setState({NewTask:false})
-        
+
+        return <Task/>
         
     }
 
@@ -30,6 +31,7 @@ class NewTask extends React.Component {
             <div>
                 <form  onSubmit={()=>this.submitTask()}>
                     <textarea placeholder='Add new task here'></textarea>
+                    <br/>
                     <button type='submit'>Add Task</button>
                 </form>
             </div>

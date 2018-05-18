@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Nav from './components/Nav/Nav';
 import TaskCard from './components/TaskCard';
-import NewTask from './components/NewTask'
+import NewTask from './components/NewTask';
+import Task from './components/Task';
 import "./App.css";
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
               onClick={this.newTask}
               id="3">
                 <NewTask/>
+                <Task/>
 
             </TaskCard>
           </div>
