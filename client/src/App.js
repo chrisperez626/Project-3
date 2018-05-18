@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route } from "react-router-dom"; 
 import {Navbar, Home, SignupForm, Login} from "./components";
@@ -58,5 +59,18 @@ class App extends Component {
     );
   }
 }
+=======
+import React from "react";
+import Whiteboard from "./components/Whiteboard/Whiteboard";
+
+
+const App = () => (
+  <div className= "siteLayout">
+    <Whiteboard />
+  </div>
+);
+
+
+>>>>>>> 492e98dc9e4b78b1c23ddf8ecaf4e0b7424a22c3
 
 export default App;
