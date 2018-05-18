@@ -57,7 +57,7 @@ class App extends Component {
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
           <Route exact path="/whiteboard" component={Whiteboard}/>
-          <Route exact path="/projectpage" component={ProjectPage}/>
+          <Route exact path="/projectpage" render={() => <ProjectPage loggedIn={this.state.loggedIn} />}/>
         </div>
       </Router>
     );
