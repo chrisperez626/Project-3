@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route } from "react-router-dom"; 
-import {Navbar, Home, SignupForm, Login} from "./components";
+import { Home, SignupForm, Login} from "./components";
+import Whiteboard from "./components/Whiteboard";
+import Navbar from "./components/Navbar";
 import API from './utils/API';
 
 
@@ -50,27 +51,15 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout}/>
+          <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} />
           <Route exact path="/" render={() => <Home loggedIn={this.state.loggedIn} user={this.state.user}/>} />
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
+          <Route exact path="/whiteboard" component={Whiteboard}/>
         </div>
       </Router>
     );
   }
 }
-=======
-import React from "react";
-import Whiteboard from "./components/Whiteboard/Whiteboard";
-
-
-const App = () => (
-  <div className= "siteLayout">
-    <Whiteboard />
-  </div>
-);
-
-
->>>>>>> 492e98dc9e4b78b1c23ddf8ecaf4e0b7424a22c3
 
 export default App;
