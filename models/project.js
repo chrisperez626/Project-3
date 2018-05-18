@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes){
-    var Project = sequelize.define("Project", {
+    const Project = sequelize.define("Project", {
         projectname: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -7,7 +7,15 @@ module.exports = function(sequelize, DataTypes){
                 len: [1]
             }
         }       
+    },{
+        timestamps:false
     });
+
+    Project.associate = function(models){
+        Project.hasMany(models.Task, {
+            onDelete: "cascade"
+        });
+    };
 
     return Project;
 }

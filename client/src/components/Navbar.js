@@ -11,9 +11,11 @@ const Navbar = ({loggedIn, logout}) => {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           {loggedIn ? 
-            <li className="nav-item">
-              <a className="nav-item nav-link" href="#" onClick={logout}>Logout</a>
-            </li>
+            [
+              <li key="logout" className="nav-item">
+                <a className="nav-item nav-link" href="#" onClick={logout} >Logout</a>
+              </li>
+            ]
             : 
             [
               <li key="signup" className="nav-item">

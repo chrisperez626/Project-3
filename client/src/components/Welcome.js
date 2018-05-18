@@ -7,44 +7,44 @@ const Home = () => {
             {/* <h1> This is Home Page </h1> */}
             <h2>Projects</h2>
             <div className="grid">
-            <div class="card ">
-                <div class="card-block preProject">
+            <div className="card ">
+                <div className="card-block preProject">
                     Previous Projects
                 </div>
             </div>
-            <div class="card ">
-                <div class="card-block currProject">
+            <div className="card ">
+                <div className="card-block currProject">
                     Current Projects
                 </div>
             </div>
-            <div class="card">
-                <div class="card-block newProject">
+            <div className="card">
+                <div className="card-block newProject">
                     + Create New Projects
                 </div>
             </div>
             </div>
             <h2>Boards</h2>
-            <div class="card board-card">
-                <div class="card-block">
+            <div className="card board-card">
+                <div className="card-block">
                     Task1
                 </div>
             </div>
             <br/>
-            <div class="card board-card">
-                <div class="card-block">
+            <div className="card board-card">
+                <div className="card-block">
                     Task2
                 </div>
             </div>
             <br/>
-            <div class="card board-card">
-                <div class="card-block">
+            <div className="card board-card">
+                <div className="card-block">
                     Task3
                 </div>
             </div>
             <br/>
             <h2>Team</h2>
-            <div class="card">
-                <div class="card-block">
+            <div className="card">
+                <div className="card-block">
                     Create new Team
                 </div>
             </div>

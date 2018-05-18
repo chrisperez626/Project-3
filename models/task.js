@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes){
-    var Task = sequelize.define("Task", {
+    const Task = sequelize.define("Task", {
         taskname: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -9,9 +9,20 @@ module.exports = function(sequelize, DataTypes){
         },
         status: {
             type: DataTypes.STRING,
-            allowNull:false
+            allowNull:false,
+            
         }        
+    },{
+        timestamps:false
     });
+
+    Task.associate = function(models){
+        Task.belongsTo(models.Project,{
+            foreignKey:{
+                allowNull:false
+            }
+        });
+    };
 
     return Task;
 }

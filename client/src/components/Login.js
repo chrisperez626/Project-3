@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-import { Redirect } from "react-router-dom"
+import React, {Component} from "react";
+import { Redirect } from "react-router-dom";
 import { Wrapper, Row, Col } from "./BootstrapGrid";
 import API from "../utils/API";
 
@@ -25,7 +25,6 @@ class Login extends Component{
   };
 
   handleLogin = event => {
-    event.preventDefault();
     API.login({ email: this.state.email, password: this.state.password})
     .then((res) => {
         console.log("RES", res);
