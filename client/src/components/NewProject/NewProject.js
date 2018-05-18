@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import "./Project.css";
 
-class Project extends Component {
+class NewProject extends Component {
     state={
 
     }
@@ -15,4 +15,4 @@ class Project extends Component {
 
 }
 
-export default Project;
+export default NewProject;

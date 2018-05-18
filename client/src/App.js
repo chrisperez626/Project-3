@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {BrowserRouter as Router, Route } from "react-router-dom"; 
 import { Home, SignupForm, Login} from "./components";
 import Whiteboard from "./components/Whiteboard";
+import ProjectPage from "./components/ProjectPage";
 import Navbar from "./components/Navbar";
 import API from './utils/API';
 
@@ -56,6 +57,7 @@ class App extends Component {
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
           <Route exact path="/whiteboard" component={Whiteboard}/>
+          <Route exact path="/projectpage" component={ProjectPage}/>
         </div>
       </Router>
     );

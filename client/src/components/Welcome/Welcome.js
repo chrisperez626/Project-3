@@ -6,7 +6,7 @@ class Welcome extends Component {
         redirectTo:""
     }
     handleProject=()=>{
-        this.setState({redirectTo:"/task"});
+        this.setState({redirectTo:"/projectpage"});
     }
 
     render(){
@@ -18,7 +18,7 @@ class Welcome extends Component {
                 <h2>Projects</h2>
                 <div className="grid">
                 <div className="card ">
-                    <div className="card-block preProject" onclick={this.handleProject}>
+                    <div className="card-block preProject" onClick={this.handleProject}>
                         Previous Projects
                     </div>
                 </div>
