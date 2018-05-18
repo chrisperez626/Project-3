@@ -1,4 +1,6 @@
 module.exports = {
-    auth: require("./auth")
-  }
+  auth: require("./auth"),
+  projects: require("./projectsController"),
+  tasks:require("./taskController")
+}
   
