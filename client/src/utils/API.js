@@ -35,13 +35,13 @@ export default {
     return axios.get("/api/tasks");
   },
   saveTask: function(taskData){
-    return axios.post("/api/tasks",taskdata);
+    return axios.post("/api/tasks",taskData);
   },
   getTask: function(id){
     return axios.get("/api/tasks/"+id);
   },
   updateTask: function(id,taskData){
-    return axios.post("/api/tasks/"+id, tasktData);
+    return axios.post("/api/tasks/"+id, taskData);
   },
   deleteTask: function(id){
     return axios.delete("/api/tasks/"+id);
