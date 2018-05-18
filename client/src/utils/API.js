@@ -20,6 +20,7 @@ export default {
     return axios.get("/api/projects");
   },
   saveProject: function(projectData){
+    console.log("SaveProject called");
     return axios.post("/api/projects",projectData);
   },
   getProject: function(id){

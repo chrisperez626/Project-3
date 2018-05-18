@@ -20,8 +20,11 @@ module.exports = {
     },
 
     create: (req, res) => {
+        console.log("Create Project called");
         db.Project.create(req.body)
-        .then(dbModel => res.json(dbModel))
+        .then(dbModel => {
+            console.log(dbModel);
+            res.json(dbModel)})
         .catch(err => console.log(err));
     },
 

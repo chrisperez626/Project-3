@@ -34,7 +34,7 @@ module.exports = {
         .catch(err => console.log(err));
     },
 
-    delete: (req, res) => {
+    remove: (req, res) => {
         db.Task
             .destroy({
                 where:{

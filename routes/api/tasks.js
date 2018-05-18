@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const projectsController = require("../../controllers/taskController");
+const taskController = require("../../controllers/taskController");
 
 router.route("/")
     .get(taskController.findAll)

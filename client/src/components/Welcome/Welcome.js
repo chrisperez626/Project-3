@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
+import API from "../../utils/API";
 
 class Welcome extends Component {
     state={
-        redirectTo:""
+        redirectTo:"",
+        projects:""
+    }
+    componentDidMount(){
+        this.loadProjects();
+    }
+    loadProjects=()=>{
+        API.getAllProject().then(res=>{
+            console.log(res.data[0].projectname);
+            this.setState({
+                projects:res.data[0].projectname
+            });
+        }).catch(err=>console.log(err));
     }
     handleProject=()=>{
         this.setState({redirectTo:"/projectpage"});
+    }
+
+    createProject=()=>{
+        this.setState({redirectTo:"/createProject"});
     }
 
     render(){
@@ -19,7 +36,7 @@ class Welcome extends Component {
                 <div className="grid">
                 <div className="card ">
                     <div className="card-block preProject" onClick={this.handleProject}>
-                        Previous Projects
+                        {this.state.projects}
                     </div>
                 </div>
                 <div className="card ">
@@ -28,7 +45,7 @@ class Welcome extends Component {
                     </div>
                 </div>
                 <div className="card">
-                    <div className="card-block newProject">
+                    <div className="card-block newProject" onClick={this.createProject}>
                         + Create New Projects
                     </div>
                 </div>
