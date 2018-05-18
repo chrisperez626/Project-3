@@ -1,10 +1,10 @@
 import React from 'react';
 import {Wrapper, Row, Col} from "./BootstrapGrid";
-import Welcome from "./Welcome";
+import Welcome from "../components/Welcome";
 
 const styles = {
   header: {
-    color: "green",
+    color: "white",
     borderStyle: "solid",
     borderWidth: "1px",
     textAlign: "center"
@@ -25,7 +25,7 @@ export default ({loggedIn = false, user}) => {
       <Wrapper>
         <Row>
           <Col>
-          <h1 style={styles.header}>You are successfully logged in {user.email}!</h1>
+          <h1 style={styles.header}>You are successfully logged in {user.firstname}!</h1>
           <Welcome/>
           </Col>
         </Row>

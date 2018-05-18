@@ -16,7 +16,7 @@ export default {
   logout: () => {
     return axios.get("/auth/logout");
   },
-  getProject: function(){
+  getAllProject: function(){
     return axios.get("/api/projects");
   },
   saveProject: function(projectData){
@@ -31,17 +31,17 @@ export default {
   deleteProject: function(id){
     return axios.delete("/api/projects/"+id);
   },
-  getTask: function(){
+  getAllTask: function(){
     return axios.get("/api/tasks");
   },
   saveTask: function(taskData){
-    return axios.post("/api/tasks",taskdata);
+    return axios.post("/api/tasks",taskData);
   },
   getTask: function(id){
     return axios.get("/api/tasks/"+id);
   },
-  updateTask: function(id,taskData){
-    return axios.post("/api/tasks/"+id, tasktData);
+  updateTask:function(id,taskData){
+    return axios.post("/api/tasks/"+id, taskData);
   },
   deleteTask: function(id){
     return axios.delete("/api/tasks/"+id);
