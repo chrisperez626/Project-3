@@ -57,6 +57,10 @@ const Content2 = ({loggedIn, logout}) => {
                     <i className="icon-lock-open text-primary"></i>
                     <h3>Open Source</h3>
                     <p className="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
                   </div>
                 </div>
               </div>
