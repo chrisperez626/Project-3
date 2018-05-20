@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --yellow: #ffc600;
     --black: #272727;
   }
@@ -16,7 +16,7 @@
     background-image: linear-gradient(110deg, #f93d66, #6d47d9);
     margin: 50px;
     background-position: fixed;
-  }
+  } */
   
   span {
     background-color: darkgrey;

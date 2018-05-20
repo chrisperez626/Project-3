@@ -4,7 +4,12 @@ import { Home, SignupForm, Login} from "./components";
 import Whiteboard from "./components/Whiteboard";
 import ProjectPage from "./components/ProjectPage";
 import Navbar from "./components/Navbar";
+import Masthead from "./components/Masthead";
 import API from './utils/API';
+import Content1 from "./components/Content1";
+import Content2 from "./components/Content2";
+import Content3 from "./components/Content3";
+import Footer from "./components/Footer";
 
 
 class App extends Component {
@@ -53,7 +58,12 @@ class App extends Component {
       <Router>
         <div>
           <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} />
-          <Route exact path="/" render={() => <Home loggedIn={this.state.loggedIn} user={this.state.user}/>} />
+          <Masthead loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+          <Content1 loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+          <Content2 loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+          <Content3 loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+          <Footer loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+          {/* <Route exact path="/" render={() => <Home loggedIn={this.state.loggedIn} user={this.state.user}/>} /> */}
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
           <Route exact path="/whiteboard" component={Whiteboard}/>
