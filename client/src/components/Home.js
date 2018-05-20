@@ -26,7 +26,7 @@ export default ({loggedIn = false, user}) => {
         <Row>
           <Col>
           <h4 style={styles.header}>You are successfully logged in {user.firstname}!</h4>
-          <Welcome/>
+          <Welcome user={user}/>
           </Col>
         </Row>
       </Wrapper>

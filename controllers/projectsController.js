@@ -10,11 +10,8 @@ module.exports = {
     },
 
     findbyId: (req,res) =>{
-        db.Project.findbyId({
-            where:{
-                id:req.params.id
-            }
-        })
+        console.log("Inside project Controller: ", req.params.id);
+        db.Project.findById(req.params.id)
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
     },

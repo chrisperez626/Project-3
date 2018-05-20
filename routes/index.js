@@ -1,10 +1,6 @@
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api");
-// const passportRoutes = require("../controllers/passportController");
-// const projectRoutes = require("../controllers/projectsController");
-// const taskRoutes = require("../controllers/taskController");
-
 // API Routes
 router.use("/api", apiRoutes);
 // router.use("/auth", passportRoutes);

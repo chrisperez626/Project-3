@@ -35,6 +35,9 @@ export default {
   getAllTask: function(){
     return axios.get("/api/tasks");
   },
+  getUserTask: function(id){
+    return axios.get("api/usertasks/"+id);
+  },
   saveTask: function(taskData){
     return axios.post("/api/tasks",taskData);
   },

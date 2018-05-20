@@ -3,7 +3,7 @@ import React from 'react';
 const styles = {
     
     input:{
-        width:"30%",
+        width:"50%",
         // textAlign:"center"
     }
   }

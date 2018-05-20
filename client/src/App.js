@@ -5,7 +5,6 @@ import Whiteboard from "./components/Whiteboard";
 import ProjectPage from "./components/ProjectPage";
 import Navbar from "./components/Navbar";
 import API from './utils/API';
-import NewProject from "./components/NewProject/NewProject";
 
 
 class App extends Component {
@@ -53,13 +52,12 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+          <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user}/>
           <Route exact path="/" render={() => <Home loggedIn={this.state.loggedIn} user={this.state.user}/>} />
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
           <Route exact path="/whiteboard" component={Whiteboard}/>
           <Route exact path="/projectpage" render={() => <ProjectPage loggedIn={this.state.loggedIn} />}/>
-          <Route exact path="/createProject" render={() => <NewProject loggedIn={this.state.loggedIn} />}/>
         </div>
       </Router>
     );
