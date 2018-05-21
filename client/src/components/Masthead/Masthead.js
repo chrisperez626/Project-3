@@ -1,17 +1,27 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+// import {BrowserRouter as Router, Route } from "react-router-dom"; 
 import "./Masthead.css";
+import Welcome from "../Welcome";
+import {Wrapper} from "../BootstrapGrid";
+import Content1 from "../../components/Content1";
+import Content2 from "../../components/Content2";
+import Content3 from "../../components/Content3";
 
-const Masthead = ({loggedIn, logout}) => {
+const Masthead = ({loggedIn, logout, user}) => {
     return (
-
-        <div className="masthead">
+      !loggedIn ?
+      <div>
+      <div className="masthead">
       <div className="container h-100">
         <div className="row h-100">
           <div className="col-lg-7 my-auto">
             <div className="header-content mx-auto">
               <h1 className="mb-5">NEW TO CODING OR TEAM PROJECTS?  THE PROJECT MANAGER MAKES IT EASY....</h1>
-              <a href="#download" className="btn btn-outline btn-xl js-scroll-trigger">SIGN UP OR LOGIN!</a>
+              {/* <Link className="nav-item nav-link" to="/signup">Signup</Link> */}
+              <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGN UP</Link>
+              <a>OR</a>
+              <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/login">LOGIN</Link>
             </div>
           </div>
           <div className="col-lg-5 my-auto">
@@ -27,6 +37,20 @@ const Masthead = ({loggedIn, logout}) => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+    <Content1  />
+    <Content2/>
+    <Content3/>
+    </div>
+    :
+    <div className="welcome">
+      <div className="container h-100">
+        <div className="row h-100">
+          <Wrapper>
+            <Welcome user={user}/>
+          </Wrapper>
         </div>
       </div>
     </div>

@@ -10,18 +10,18 @@ module.exports = {
     },
 
     findbyId: (req,res) =>{
-        db.Project.findbyId({
-            where:{
-                id:req.params.id
-            }
-        })
+        console.log("Inside project Controller: ", req.params.id);
+        db.Project.findById(req.params.id)
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
     },
 
     create: (req, res) => {
+        console.log("Create Project called");
         db.Project.create(req.body)
-        .then(dbModel => res.json(dbModel))
+        .then(dbModel => {
+            console.log(dbModel);
+            res.json(dbModel)})
         .catch(err => console.log(err));
     },
 

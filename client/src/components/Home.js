@@ -25,8 +25,8 @@ export default ({loggedIn = false, user}) => {
       <Wrapper>
         <Row>
           <Col>
-          <h1 style={styles.header}>You are successfully logged in {user.firstname}!</h1>
-          <Welcome/>
+          <h4 style={styles.header}>You are successfully logged in {user.firstname}!</h4>
+          <Welcome user={user}/>
           </Col>
         </Row>
       </Wrapper>

@@ -10,12 +10,19 @@ module.exports = {
     },
 
     findbyId:(req,res) =>{
-        db.Task.findbyId({
-            where:{
-                id:req.params.id
-            }
-        })
+        db.Task.findById(req.params.id)
         .then(dbModel => res.json(dbModel))
+        .catch(err => console.log(err));
+    },
+
+    findbyUserId:(req,res) => {
+        db.Task.findAll({
+            where:{
+                UserId:req.params.id
+            },
+            include:[db.Project]
+        }).then(dbModel => {
+            res.json(dbModel)})
         .catch(err => console.log(err));
     },
 
@@ -34,7 +41,7 @@ module.exports = {
         .catch(err => console.log(err));
     },
 
-    delete: (req, res) => {
+    remove: (req, res) => {
         db.Task
             .destroy({
                 where:{
