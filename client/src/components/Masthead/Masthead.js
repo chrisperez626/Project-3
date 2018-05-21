@@ -45,7 +45,7 @@ const Masthead = ({loggedIn, logout, user}) => {
     <Content3/>
     </div>
     :
-    <div className="welcome">
+    <div className="masthead">
       <div className="container h-100">
         <div className="row h-100">
           <Wrapper>
