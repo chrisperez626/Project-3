@@ -8,17 +8,15 @@ import Content1 from "../../components/Content1";
 import Content2 from "../../components/Content2";
 import Content3 from "../../components/Content3";
 
-const Masthead = ({loggedIn, logout, user}) => {
+const Masthead = ({loggedIn, logout, user, text}) => {
     return (
       !loggedIn ?
-      <div>
       <div className="masthead">
       <div className="container h-100">
         <div className="row h-100">
           <div className="col-lg-7 my-auto">
             <div className="header-content mx-auto">
-              <h1 className="mb-5">NEW TO CODING OR TEAM PROJECTS?  THE PROJECT MANAGER MAKES IT EASY....</h1>
-              {/* <Link className="nav-item nav-link" to="/signup">Signup</Link> */}
+              <h1 className="mb-5">{text}</h1>
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGN UP</Link>
               <a>OR</a>
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/login">LOGIN</Link>
@@ -39,10 +37,6 @@ const Masthead = ({loggedIn, logout, user}) => {
           </div>
         </div>
       </div>
-    </div>
-    <Content1  />
-    <Content2/>
-    <Content3/>
     </div>
     :
     <div className="masthead">

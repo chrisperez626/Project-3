@@ -182,7 +182,7 @@ section h2 {
 @media (min-width: 992px) {
  .masthead {
     height: 100vh;
-    min-height: 775px;
+    min-height: 550px;
     padding-top: 0;
     padding-bottom: 0;
   }

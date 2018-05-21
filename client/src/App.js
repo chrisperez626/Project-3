@@ -6,6 +6,8 @@ import Whiteboard from "./components/Whiteboard";
 import ProjectPage from "./components/ProjectPage";
 import Navbar from "./components/Navbar";
 import Masthead from "./components/Masthead";
+import Content1 from "./components/Content1";
+
 import API from './utils/API';
 
 import Footer from "./components/Footer";
@@ -57,8 +59,9 @@ class App extends Component {
       <Router>
         <div>
           <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} />
-          <Route exact path="/" render={() => <Masthead loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user}/>}/>
-          <Route exact path="/signup" component={SignupForm} />
+          <Route exact path="/" render={() => <Masthead text={"NEW TO CODING OR TEAM PROJECTS?  THE PROJECT MANAGER MAKES IT EASY...."} loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user} />
+            }/>
+          <Route exact path="/signup" render={() => <Main text="Sign Up"><SignupForm /></Main>} />
           <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
           <Route exact path="/whiteboard" component={Whiteboard}/>
           <Route exact path="/projectpage" render={() => <ProjectPage loggedIn={this.state.loggedIn} />}/>
@@ -69,5 +72,17 @@ class App extends Component {
     );
   }
 }
+
+
+const Main = props => {
+    return (
+        <div>
+            <Masthead text={props.text} />
+            <Content1>
+                {props.children}
+            </Content1>
+        </div>
+    );
+};
 
 export default App;
