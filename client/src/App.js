@@ -61,7 +61,7 @@ class App extends Component {
           <Masthead loggedIn={this.state.loggedIn} logout={this.handleLogout} />
           <Content1 loggedIn={this.state.loggedIn} logout={this.handleLogout} />
           <Content2 loggedIn={this.state.loggedIn} logout={this.handleLogout} />
-          <Content3 loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+          <Whiteboard loggedIn={this.state.loggedIn} logout={this.handleLogout} />
           <Footer loggedIn={this.state.loggedIn} logout={this.handleLogout} />
           {/* <Route exact path="/" render={() => <Home loggedIn={this.state.loggedIn} user={this.state.user}/>} /> */}
           <Route exact path="/signup" component={SignupForm} />
