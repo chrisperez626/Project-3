@@ -105,8 +105,8 @@ class Welcome extends Component {
                         Current Projects
                     </div>
                 </div> */}
-                    <div className="card board-card" style={styles.cardWidth}>
-                        <h4 className="card-block" onClick={this.toggle}>
+                    <div className="card board-card" style={styles.cardWidth} onClick={this.toggle}>
+                        <h4 className="card-block" >
                             Create New Projects
                     </h4>
                     </div>
