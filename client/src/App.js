@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route } from "react-router-dom"; 
-import { SignupForm, Login} from "./components";
+import Login from "./components/Login";
+import SignupForm from "./components/SignupForm";
 import Whiteboard from "./components/Whiteboard";
 import ProjectPage from "./components/ProjectPage";
 import Navbar from "./components/Navbar";
