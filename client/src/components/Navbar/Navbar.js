@@ -15,10 +15,10 @@ const Navbar = ({loggedIn, logout, user}) => {
             <ul className="navbar-nav ml-auto">
             {loggedIn ? 
             [
-                <li className="nav-item">
+                <li className="nav-item" key="logout">
                   <a className="nav-item nav-link" href="#" onClick={logout}>Logout</a>
                 </li>,
-                <li className="nav-item">
+                <li className="nav-item" key="whiteboard">
                   {/* <a className="nav-link js-scroll-trigger" href="#features">Manage Project</a> */}
                   <Link className="nav-utm nav-link" to="/Whiteboard">Whiteboard</Link>
                 </li>
