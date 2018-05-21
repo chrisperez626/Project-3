@@ -1,5 +1,5 @@
 const express = require("express");
-const path = require("path");
+const path = require("./routes");
 const passport = require("passport");
 const session = require("express-session");
 const bodyParser = require("body-parser");
@@ -25,7 +25,7 @@ app.use(logger);
 //controllers
 app.use("/auth", auth);
 
-// app.use(path);
+app.use(path);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

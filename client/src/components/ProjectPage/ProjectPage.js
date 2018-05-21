@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import TaskGroup from '../TaskGroup';
-import Wrapper from "../BootstrapGrid/Wrapper";
-import Col from '../BootstrapGrid/Col'
-import Row from '../BootstrapGrid/Row'
+import {Wrapper, Col, Row} from "../BootstrapGrid";
+import { Redirect } from "react-router-dom";
+
 
 class ProjectPage extends Component {
 
   render() {
+    if(!this.props.loggedIn){
+      return <Redirect to="/" />
+    }
     return (
       <div>
         <Wrapper>

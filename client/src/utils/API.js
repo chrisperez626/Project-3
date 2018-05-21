@@ -20,6 +20,7 @@ export default {
     return axios.get("/api/projects");
   },
   saveProject: function(projectData){
+    console.log("SaveProject called");
     return axios.post("/api/projects",projectData);
   },
   getProject: function(id){
@@ -33,6 +34,9 @@ export default {
   },
   getAllTask: function(){
     return axios.get("/api/tasks");
+  },
+  getUserTask: function(id){
+    return axios.get("api/usertasks/"+id);
   },
   saveTask: function(taskData){
     return axios.post("/api/tasks",taskData);
