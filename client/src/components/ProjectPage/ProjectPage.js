@@ -7,9 +7,9 @@ import { Redirect } from "react-router-dom";
 class ProjectPage extends Component {
 
   render() {
-    if(!this.props.loggedIn){
-      return <Redirect to="/" />
-    }
+    // if(!this.props.loggedIn){
+    //   return <Redirect to="/" />
+    // }
     return (
       <div>
         <Wrapper>
