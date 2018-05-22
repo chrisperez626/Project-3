@@ -33,7 +33,6 @@ class TaskGroup extends Component {
         this.setState({NewTask:false})
         API.saveTask({taskname: this.state.taskName, status: this.props.header, UserId: "1", ProjectId:'1'}).then(function(data, err){
             if (err) throw err;
-            console.log(data);
         })
         API.getAllTask()
         .then(res =>{
@@ -68,7 +67,8 @@ class TaskGroup extends Component {
                                     <Task
                                     key={task.id}
                                     id={task.id}
-                                    content={task.taskname}/>
+                                    content={task.taskname}
+                                    status={task.status}/>
                                 )
                             })}
                         </div>
@@ -80,6 +80,7 @@ class TaskGroup extends Component {
                                 <textarea id='newTask' placeholder='Add new task here' onChange={this.handleInputChange} ></textarea>
                                 <br />
                                 <button type='submit'>Add Task</button>
+                                <button onClick={this.newTask}>Cancel</button>
                             </form>
                         </div>
                         )
