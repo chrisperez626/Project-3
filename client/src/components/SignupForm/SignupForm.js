@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import {Wrapper, Row, Col} from "../BootstrapGrid"
 import API from "../../utils/API";
 
+
 const styles = {
   header: {
     color: "orange",
@@ -39,6 +40,7 @@ class SignupForm extends Component {
       return <Redirect to={this.state.redirectTo} />
     }
     return (
+ 
       <Wrapper>
         <Row>
           <Col>
@@ -83,6 +85,7 @@ class SignupForm extends Component {
           </Col>
         </Row>
       </Wrapper>
+ 
     )
   }
 }
