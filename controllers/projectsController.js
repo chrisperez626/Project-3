@@ -15,7 +15,15 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
     },
-
+    findbyUserId:(req,res) => {
+        db.Project.findAll({
+            where:{
+                UserId:req.params.id
+            },
+        }).then(dbModel => {
+            res.json(dbModel)})
+        .catch(err => console.log(err));
+    },
     create: (req, res) => {
         console.log("Create Project called");
         db.Project.create(req.body)
@@ -26,6 +34,7 @@ module.exports = {
     },
 
     update: (req, res) => {
+        console.log("inside update project controller:",req.body);
         db.Project.update( req.body, {
             where:{
                 id:req.params.id

@@ -23,11 +23,15 @@ export default {
     console.log("SaveProject called");
     return axios.post("/api/projects",projectData);
   },
+  getUserProject: function(id){
+    return axios.get("api/userprojects/"+id);
+  },
   getProject: function(id){
     return axios.get("/api/projects/"+id);
   },
-  updateProject: function(id, projectData){
-    return axios.post("/api/projects/"+id, projectData);
+  updateProject: function(id,projectData){
+    console.log("update project API", projectData.id);
+    return axios.put("/api/projects/"+id, projectData);
   },
   deleteProject: function(id){
     return axios.delete("/api/projects/"+id);
@@ -45,7 +49,7 @@ export default {
     return axios.get("/api/tasks/"+id);
   },
   updateTask:function(id,taskData){
-    return axios.post("/api/tasks/"+id, taskData);
+    return axios.put("/api/tasks/"+id, taskData);
   },
   deleteTask: function(id){
     return axios.delete("/api/tasks/"+id);

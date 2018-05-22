@@ -47,8 +47,8 @@ class App extends Component {
     API.getCurrentUser()
     .then(res => {
       this.setState({
-        user: res.data.user,
-        loggedIn: res.data.user || false
+        user: res.data,
+        loggedIn: res.data || false
       })
     })
     .catch(err => {
@@ -59,6 +59,7 @@ class App extends Component {
  
 
   render() {
+    console.log("in app js", this.state.user)
     return (
       <Router>
         <div>
