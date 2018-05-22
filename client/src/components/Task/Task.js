@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
 import './Task.css';
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from "reactstrap";
+import API from '../../utils/API'
 
 class Task extends Component{
     state = {
         modal: false,
-        Dropdown: false
+        Dropdown: false,
+        status: this.props.status,
+        comments:[],
+        description:"",
+        taskName: ""
+    }
+    componentDidMount=()=>{
+        API
     }
 
     modalPopup = () =>{
@@ -14,6 +22,19 @@ class Task extends Component{
 
     toggle = () =>{
         this.setState({Dropdown: !this.state.Dropdown})
+    }
+
+    handleInputChange = event =>{
+        const {name, value} = event.target
+        this.setState({[name]: value})
+    }
+
+    onSelect = event =>{
+        this.setState({status: event.target.innerText})
+    }
+
+    onSubmit = event =>{
+        API.updateTask(this.props.id, {taskName: this.state.taskName, status: this.state.status, description: this.state.description})
     }
 
     render(){
@@ -26,7 +47,7 @@ class Task extends Component{
                 </a>
                 <div>
                     <Modal isOpen={this.state.modal}>
-                        <form>
+                        <form onSubmit={this.onSubmit}>
                             <ModalHeader>
                                 {this.props.content}
                                 <Button id="x-button"color="danger" onClick={this.modalPopup}>X</Button>
@@ -38,16 +59,23 @@ class Task extends Component{
                                         {this.props.status}
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem>To Do</DropdownItem>
-                                        <DropdownItem>Doing</DropdownItem>
-                                        <DropdownItem>Done</DropdownItem>
-                                        <DropdownItem>Remove from Project</DropdownItem>
+                                        <DropdownItem onClick={this.onSelect} value="To Do">To Do</DropdownItem>
+                                        <DropdownItem onClick={this.onSelect} value="Doing">Doing</DropdownItem>
+                                        <DropdownItem onClick={this.onSelect} value="Done">Done</DropdownItem>
+                                        <DropdownItem onClick={this.onSelect} value="Remove">Remove from Project</DropdownItem>
                                     </DropdownMenu>
                                 </Dropdown>
                                 <br/>
-                                <h3>Update Task Name</h3>
-                                <input type="text" defaultValue={this.props.content}/>
-                                <h3></h3>
+                                <h3 >Update Task Name</h3>
+                                <input name="taskName" onChange={this.handleInputChange} type="text" defaultValue={this.props.content}/>
+                                <br/>
+                                <h3>Description</h3>
+                                <textarea name="description" onChange={this.handleInputChange}/>
+                                <br/>
+                                <h4>Comments</h4>
+                                <input type="text"/>
+                                <Button>Submit</Button>
+                                {}
                             </ModalBody>
                             <ModalFooter>
                                 <Button type="submit">Submit</Button>

@@ -35,7 +35,7 @@ class TaskGroup extends Component {
     submitTask = event => {
         // event.preventDefault()
         this.setState({ NewTask: !this.state.NewTask })
-        API.saveTask({ taskname: this.state.taskName, status: this.props.header, UserId: "1", ProjectId: '1' })
+        API.saveTask({ taskname: this.state.taskName, status: this.props.header, UserId: "1", ProjectId: '2' })
         .then(data=>{
             this.loadTasks()
         })
@@ -64,7 +64,7 @@ class TaskGroup extends Component {
                                     <div>
                                         <button onClick={() => this.newTask()}>Add new task +</button>
                                     </div>
-                                    {this.state.divCount.map(task => {
+                                    {this.state.divCount.slice(0).reverse().map(task => {
                                         if (this.props.header === task.status)
                                             return (
                                                 <Task
