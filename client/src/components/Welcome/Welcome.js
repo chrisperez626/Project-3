@@ -10,7 +10,6 @@ const styles = {
         gridGap: "10px",
         height: "100px",
         color:"black"
-
     },
     project:{
         textAlign:"center"
@@ -32,7 +31,7 @@ class Welcome extends Component {
 
         this.state = {
             redirectTo: "",
-            user:props.user,
+            user:this.props.user,
             projects:[],
             tasks:[],
             show: false, 
@@ -46,8 +45,9 @@ class Welcome extends Component {
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         console.log("User inside Welcome:", this.props.user);        
     }
-
+    
     componentDidMount() {
+        // this.setState({user:this.props.user});
         this.loadTasks();
         this.loadProjects();
     }
@@ -59,11 +59,12 @@ class Welcome extends Component {
         });
     }
 
-    updateToggle = (id) => {
+    updateToggle = (id, name) => {
         console.log("update toggle");
         this.setState({
             updateModal: !this.state.updateModal,
-            projectId:id
+            projectId:id,
+            projectname:name
         });
     }
 
@@ -164,16 +165,16 @@ class Welcome extends Component {
                     {this.state.projects.map(project =>(
                         <div  key ={project.id}>
                         <div>
-                        <p onClick={this.handleProject}>{project.projectname}</p> <span data-id={project.id} onClick={()=>this.updateToggle(project.id)}><i className="fas fa-edit" data-id={project.id} onClick={()=>this.updateToggle(project.id)}></i></span>    
+                        <p onClick={this.handleProject}>{project.projectname}</p> <span data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}><i className="fas fa-edit" data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}></i></span>    
                         </div>
                         <div>
                         <Modal isOpen={this.state.updateModal}>
-                            <form onSubmit={this.handleFormUpdate} data-id={this.state.projectId}>
-                                <ModalHeader>{this.state.projectId}</ModalHeader>
+                            <form onSubmit={this.handleFormUpdate} data-id={this.state.projectId} >
+                                <ModalHeader>Update Project Name</ModalHeader>
                                 <ModalBody>
                                     <div className="row">
                                         <div className="form-group col-md-6">
-                                            <input type="text" name="projectname" value={this.state.projectname} onChange={this.handleInputChange} className="form-control" />
+                                            <input type="text" name="projectname" value={this.state.projectname} onChange={this.handleInputChange} placeholder={this.state.projectname} className="form-control" />
                                         </div>
                                     </div>
                                 </ModalBody>
