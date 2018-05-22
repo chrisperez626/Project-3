@@ -13,7 +13,7 @@ router.post("/signup", (req, res) => {
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
   // console.log(req.user);
-  res.json({ user: req.user });
+  res.json(req.user);
 });
 
 router.get('/logout', function(req, res){
@@ -26,7 +26,7 @@ router.get('/logout', function(req, res){
 
 router.get("/getUser", (req, res) => {
   if(req.user){
-    res.json({ user: req.user });
+    res.json(req.user );
   }else{
     res.json({user: null })
   }

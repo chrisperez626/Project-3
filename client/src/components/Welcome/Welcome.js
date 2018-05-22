@@ -47,7 +47,6 @@ class Welcome extends Component {
     }
     
     componentDidMount() {
-        // this.setState({user:this.props.user});
         this.loadTasks();
         this.loadProjects();
     }
@@ -129,6 +128,7 @@ class Welcome extends Component {
     }
 
     render() {
+        console.log("in welcome",this.state.user)
         if (this.state.redirectTo) {
             return <Redirect to={this.state.redirectTo} />
         }
@@ -153,11 +153,11 @@ class Welcome extends Component {
                     </div>
                          ) : (
                             <div className="grid mx-auto" style={styles.grid}>
-                                <div className="card">
+                                {/* <div className="card">
                                 <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
                                 <h4 className="card-block" style={styles.preProject} >
                                 </h4>
-                                </div>
+                                </div> */}
                             </div>
                             )} 
                     <br/>
