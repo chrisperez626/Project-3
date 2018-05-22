@@ -28,7 +28,7 @@ router.get("/getUser", (req, res) => {
   if(req.user){
     res.json(req.user );
   }else{
-    res.json({user: null })
+    res.json(null)
   }
 });
 

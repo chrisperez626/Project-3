@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Whiteboard.css";
 import classNames from "./Whiteboard.css";
+import { Redirect } from "react-router-dom";
 
 export default class extends Component {
   static defaultProps = {
@@ -203,6 +204,9 @@ export default class extends Component {
   };
 
   render() {
+    if(!this.props.loggedIn){
+      return <Redirect to="/" />
+    }
     return (
         <div className={classNames.tools}>
           <button
