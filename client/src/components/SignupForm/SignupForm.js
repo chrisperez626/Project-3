@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import {Wrapper, Row, Col} from "../BootstrapGrid"
 import API from "../../utils/API";
-import Masthead from "../Masthead";
-import Content1 from "../Content1";
+
 
 const styles = {
   header: {
