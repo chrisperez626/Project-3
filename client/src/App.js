@@ -6,9 +6,13 @@ import Whiteboard from "./components/Whiteboard";
 import ProjectPage from "./components/ProjectPage";
 import Navbar from "./components/Navbar";
 import Masthead from "./components/Masthead";
+import Content1 from "./components/Content1";
 import API from './utils/API';
-
 import Footer from "./components/Footer";
+import MainMastDetails from "./components/MainMastDetails";
+import "./App.css";
+
+
 
 
 class App extends Component {
@@ -52,17 +56,44 @@ class App extends Component {
     });
   }
 
+ 
+
   render() {
     console.log("in app js", this.state.user)
     return (
       <Router>
         <div>
-          <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user}/>
-          <Route exact path="/" render={() => <Masthead loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user}/>}/>
-          <Route exact path="/signup" component={SignupForm} />
-          <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
-          <Route exact path="/whiteboard" component={Whiteboard}/>
-          <Route exact path="/projectpage" render={() => <ProjectPage loggedIn={this.state.loggedIn} />}/>
+
+          <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+
+    {/* <Route exact path="/" render={() => <Masthead loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user} text="main page"><MainMastDetails /> </Masthead>}/> */}
+
+     <Route exact path="/" render={() => <Main  loggedIn={this.state.loggedIn}
+                                                logout={this.handleLogout}
+                                                user={this.state.user} 
+                                                mastHeadContent={<MainMastDetails />} 
+                                                mainContent={<SignupForm />}/>} />
+
+
+    <Route exact path="/signup" render={() => <Main
+                                                mastHeadContent={<MainMastDetails />} 
+                                                mainContent={<SignupForm />}/>} />
+
+    <Route exact path="/login" render={() => <Main
+                                                mastHeadContent={<MainMastDetails />} 
+                                                mainContent={<Login setUser={this.setUser} />} />}/>
+
+
+    <Route exact path="/whiteboard" render={() => <Main
+                                                mastHeadContent={<MainMastDetails />} 
+                                                mainContent={<Whiteboard />}/>} />
+
+
+<Route exact path="/projectpage" render={() => <Main
+                                                mastHeadContent={<MainMastDetails />} 
+                                                mainContent={<ProjectPage loggedIn={this.state.loggedIn} />} />}/>
+
+
           <Footer loggedIn={this.state.loggedIn} logout={this.handleLogout} />
 
         </div>
@@ -70,5 +101,19 @@ class App extends Component {
     );
   }
 }
+
+
+const Main = props => {
+    return (
+        <div>
+            
+            <Masthead>{props.mastHeadContent}</Masthead>
+          
+            <Content1>
+                {props.mainContent}
+            </Content1>
+        </div>
+    );
+};
 
 export default App;
