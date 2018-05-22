@@ -8,8 +8,11 @@ const styles = {
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gridGap: "10px",
-        height: "100px"
-
+        height: "100px",
+        color:"black"
+    },
+    project:{
+        textAlign:"center"
     },
     preProject: {
         textAlign: "center",
@@ -28,26 +31,40 @@ class Welcome extends Component {
 
         this.state = {
             redirectTo: "",
-            user:props.user,
-            // projects: [],
+            user:this.props.user,
+            projects:[],
             tasks:[],
             show: false, 
-            projectname:""
+            projectname:"",
+            projectId:""
         };
 
-        this.toggle = this.toggle.bind(this);
+        this.createToggle = this.createToggle.bind(this);
+        this.updateToggle = this.updateToggle.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         console.log("User inside Welcome:", this.props.user);        
     }
-
+    
     componentDidMount() {
+        // this.setState({user:this.props.user});
         this.loadTasks();
+        this.loadProjects();
     }
 
-    toggle = () => {
+    createToggle = () => {
+        console.log("create Toggle");
         this.setState({
-            modal: !this.state.modal
+            createModal: !this.state.createModal
+        });
+    }
+
+    updateToggle = (id, name) => {
+        console.log("update toggle");
+        this.setState({
+            updateModal: !this.state.updateModal,
+            projectId:id,
+            projectname:name
         });
     }
 
@@ -59,11 +76,41 @@ class Welcome extends Component {
     handleFormSubmit=event=> {
         event.preventDefault();
         if(this.state.projectname){
-            API.saveProject({projectname:this.state.projectname}).then(()=>{
+            console.log("UserId inside save project: ",this.state.user.id);
+            const newProject={
+                projectname:this.state.projectname,
+                UserId:this.state.user.id
+            };
+            API.saveProject(newProject).then(()=>{
                 console.log("Project Created");
                 this.setState({projectname:""});
+                this.loadProjects();
             }).catch(err=>console.log(err));
         }
+    }
+
+    handleFormUpdate =(event) => {
+        event.preventDefault();
+        const id = event.target.getAttribute("data-id");
+        console.log("Project id: ", id);
+        if(this.state.projectname){
+            console.log("update project: ",this.state.projectname);
+            const updatedProject={
+                projectname:this.state.projectname,
+            };
+            API.updateProject(id,updatedProject).then(()=>{
+                console.log("Project Updated");
+                this.setState({projectname:""});
+                this.loadProjects();
+            }).catch(err=>console.log(err));
+        }
+    }
+
+    loadProjects = () =>{
+        API.getUserProject(this.state.user.id).then(projects =>{
+            console.log("Projects: ",projects.data);
+            this.setState({projects:projects.data});
+        }).catch(err => console.log(err));
     }
 
     loadTasks = () => {
@@ -77,6 +124,10 @@ class Welcome extends Component {
         this.setState({ redirectTo: "/projectpage" });
     }
 
+    testHandler = event => {
+        console.log(event.target.getAttribute("data-id"))
+    }
+
     render() {
         if (this.state.redirectTo) {
             return <Redirect to={this.state.redirectTo} />
@@ -87,55 +138,66 @@ class Welcome extends Component {
                 {this.state.tasks.length ? (
                     <div className="grid" style={styles.grid}>
                         {this.state.tasks.map(task => (
+                            <div key={task.id}>
                             <div className="card" key={task.id}>
-                                <h3>Project: {task.Project.projectname}</h3>
+                                <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
                                 <h4 className="card-block" style={styles.preProject} onClick={this.handleProject}>
                                     {task.taskname}
                                 </h4>
+                                <p style={styles.project}>Project: {task.Project.projectname}</p>
                             </div>
-                        ))}
+                            <div></div>
+                            </div>
+                        )
+                        )}
                     </div>
-                ) : (
-                        <h3> No projects found</h3>
-                    )}
-                    <br/>
-                <div style={styles.grid}>
-                    {/* <div className="card ">
-                    <div className="card-block currProject">
-                        Current Projects
-                    </div>
-                </div> */}
-                    <div className="card board-card" style={styles.cardWidth} onClick={this.toggle}>
-                        <h4 className="card-block" >
-                            Create New Projects
-                    </h4>
-                    </div>
-                </div>
-                <h2>Projects</h2>
-                {/* {this.state.tasks.length ? (
-                    <div className="grid" style={styles.grid}>
-                        {this.state.tasks.map(task => (
-                            <div className="card" key={task.id}>
-                                <h4 className="card-block" style={styles.preProject}>
-                                    {task.taskname}
+                         ) : (
+                            <div className="grid mx-auto" style={styles.grid}>
+                                <div className="card">
+                                <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
+                                <h4 className="card-block" style={styles.preProject} >
                                 </h4>
+                                </div>
                             </div>
-                        ))}
+                            )} 
+                    <br/>
+                <div><h4>Projects</h4></div>
+                    {this.state.projects.map(project =>(
+                        <div  key ={project.id}>
+                        <div>
+                        <p onClick={this.handleProject}>{project.projectname}</p> <span data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}><i className="fas fa-edit" data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}></i></span>    
+                        </div>
+                        <div>
+                        <Modal isOpen={this.state.updateModal}>
+                            <form onSubmit={this.handleFormUpdate} data-id={this.state.projectId} >
+                                <ModalHeader>Update Project Name</ModalHeader>
+                                <ModalBody>
+                                    <div className="row">
+                                        <div className="form-group col-md-6">
+                                            <input type="text" name="projectname" value={this.state.projectname} onChange={this.handleInputChange} placeholder={this.state.projectname} className="form-control" />
+                                        </div>
+                                    </div>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <input type="submit" value="Submit" color="success" className="btn btn-success"  />
+                                    <Button color="danger" onClick={(event)=>this.updateToggle(project.id)}>Cancel</Button>
+                                </ModalFooter>
+                            </form>
+                        </Modal>
                     </div>
-                ) : (
-                        <h3> No Tasks found</h3>
-                    )} */}
-                <br />
-                {/* <h2>Team</h2>
-                <div style={styles.grid}>
-                    <div className="card board-card">
-                        <h4 className="card-block">
-                            Create new Team
+                    </div>
+                    ))}
+                {/* <div style={styles.grid}>
+                    <div className="card board-card" style={styles.cardWidth} onClick={this.toggle}> */}
+                        <h4 className="card-block" onClick={this.createToggle}>
+                            + Create New Project
                     </h4>
-                    </div>
+                    {/* </div>
                 </div> */}
+                
+                <br />
                 <div>
-                    <Modal isOpen={this.state.modal}>
+                    <Modal isOpen={this.state.createModal}>
                         <form onSubmit={this.handleFormSubmit}>
                             <ModalHeader>Project Name</ModalHeader>
                             <ModalBody>
@@ -147,12 +209,14 @@ class Welcome extends Component {
                             </ModalBody>
                             <ModalFooter>
                                 <input type="submit" value="Submit" color="success" className="btn btn-success" />
-                                <Button color="danger" onClick={this.toggle}>Cancel</Button>
+                                <Button color="danger" onClick={this.createToggle}>Cancel</Button>
                             </ModalFooter>
                         </form>
                     </Modal>
                 </div>
+                
             </div>
+            
         );
     }
 }
