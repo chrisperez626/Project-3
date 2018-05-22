@@ -8,8 +8,8 @@ class Task extends Component{
 
     render(){
         return(
-            <div className="card">
-                <strong>Create database</strong>
+            <div id={this.props.id} className="card">
+                <strong>{this.props.content}</strong>
             </div>
         )
     }
