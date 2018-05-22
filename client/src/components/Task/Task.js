@@ -9,8 +9,8 @@ class Task extends Component{
         Dropdown: false,
         status: this.props.status,
         comments:[],
-        description:"",
-        taskName: ""
+        description:this.props.description,
+        taskName: this.props.content
     }
     componentDidMount=()=>{
         API
@@ -25,6 +25,7 @@ class Task extends Component{
     }
 
     handleInputChange = event =>{
+        event.preventDefault()
         const {name, value} = event.target
         this.setState({[name]: value})
     }
@@ -34,7 +35,7 @@ class Task extends Component{
     }
 
     onSubmit = event =>{
-        API.updateTask(this.props.id, {taskName: this.state.taskName, status: this.state.status, description: this.state.description})
+        API.updateTask(this.props.id, {taskname: this.state.taskName, status: this.state.status, description: this.state.description})
     }
 
     render(){
@@ -56,10 +57,10 @@ class Task extends Component{
                                 <h2>Update Status</h2>
                                 <Dropdown isOpen={this.state.Dropdown} toggle={this.toggle}>
                                     <DropdownToggle caret>
-                                        {this.props.status}
+                                        {this.state.status}
                                     </DropdownToggle>
                                     <DropdownMenu>
-                                        <DropdownItem onClick={this.onSelect} value="To Do">To Do</DropdownItem>
+                                        <DropdownItem onClick={this.onSelect} value="To-Do">To-Do</DropdownItem>
                                         <DropdownItem onClick={this.onSelect} value="Doing">Doing</DropdownItem>
                                         <DropdownItem onClick={this.onSelect} value="Done">Done</DropdownItem>
                                         <DropdownItem onClick={this.onSelect} value="Remove">Remove from Project</DropdownItem>
@@ -70,12 +71,12 @@ class Task extends Component{
                                 <input name="taskName" onChange={this.handleInputChange} type="text" defaultValue={this.props.content}/>
                                 <br/>
                                 <h3>Description</h3>
-                                <textarea name="description" onChange={this.handleInputChange}/>
+                                <div className="card text-center"><h5>{this.props.description}</h5></div>
+                                <textarea placeholder="Change description here" name="description" onChange={this.handleInputChange}/>
                                 <br/>
                                 <h4>Comments</h4>
                                 <input type="text"/>
                                 <Button>Submit</Button>
-                                {}
                             </ModalBody>
                             <ModalFooter>
                                 <Button type="submit">Submit</Button>
