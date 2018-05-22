@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import "./Navbar.css";
 
 const Navbar = ({loggedIn, logout, user}) => {
+  console.log("User in navbar:", user);
   return (
     <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div className="container">
@@ -21,10 +22,10 @@ const Navbar = ({loggedIn, logout, user}) => {
                 <li className="nav-item" key="whiteboard">
                   {/* <a className="nav-link js-scroll-trigger" href="#features">Manage Project</a> */}
                   <Link className="nav-utm nav-link" to="/Whiteboard">Whiteboard</Link>
+                </li>,
+                <li className="nav-item" key="user">
+                  <a className="nav-link js-scroll-trigger" href="#">{user.firstname}</a>
                 </li>
-                // <li className="nav-item">
-                //   <a className="nav-link js-scroll-trigger" href="#contact">Whiteboard</a>
-                // </li>
               ]
             : 
               [
