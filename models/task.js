@@ -7,16 +7,26 @@ module.exports = function(sequelize, DataTypes){
                 len: [1]
             }
         },
+        description:{
+            type:DataTypes.TEXT,
+            allowNull:true
+        },
         status: {
             type: DataTypes.STRING,
             allowNull:false,
             
-        }        
+        }
     },{
         timestamps:false
     });
 
     Task.associate = function(models){
+        Task.belongsTo(models.User,{
+            foreignKey:{
+                allowNull:false
+            }
+        });
+
         Task.belongsTo(models.Project,{
             foreignKey:{
                 allowNull:false

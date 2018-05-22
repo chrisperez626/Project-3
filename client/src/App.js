@@ -47,8 +47,8 @@ class App extends Component {
     API.getCurrentUser()
     .then(res => {
       this.setState({
-        user: res.data.user,
-        loggedIn: res.data.user || false
+        user: res.data,
+        loggedIn: res.data || false
       })
     })
     .catch(err => {
@@ -59,9 +59,11 @@ class App extends Component {
  
 
   render() {
+    console.log("in app js", this.state.user)
     return (
       <Router>
         <div>
+
           <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} />
 
     {/* <Route exact path="/" render={() => <Masthead loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user} text="main page"><MainMastDetails /> </Masthead>}/> */}
@@ -90,6 +92,7 @@ class App extends Component {
 <Route exact path="/projectpage" render={() => <Main
                                                 mastHeadContent={<MainMastDetails />} 
                                                 mainContent={<ProjectPage loggedIn={this.state.loggedIn} />} />}/>
+
 
           <Footer loggedIn={this.state.loggedIn} logout={this.handleLogout} />
 
