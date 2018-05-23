@@ -2,23 +2,25 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import Task from "../Task";
 
 const styles = {
     body:{
-        paddingTop:"100px"
+        // paddingTop:"100px"
     },
     grid: {
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gridGap: "10px",
-        height: "100px",
+        height: "50px",
         color:"black"
     },
     projectContent:{
         paddingTop:"200px"
     },
     project:{
-        textAlign:"center"
+        textAlign:"center",
+        fontSize:"16px"
     },
     preProject: {
         textAlign: "center",
@@ -28,7 +30,15 @@ const styles = {
         backgroundColor: "lightgrey",
         paddingTop: "25px",
         textAlign: "center"
+    },
+    cardStyle:{
+        height:"250px",
+        width:"250px"
+    },
+    projectLbl:{
+        paddingRight:"10px"
     }
+
 }
 
 class Welcome extends Component {
@@ -124,8 +134,8 @@ class Welcome extends Component {
         }).catch(err => console.log(err));
     }
 
-    handleProject = () => {
-        this.setState({ redirectTo: "/projectpage" });
+    handleProject = (projectid) => {
+        this.setState({ redirectTo: "/projectpage/"+projectid});
     }
 
     testHandler = event => {
@@ -133,6 +143,9 @@ class Welcome extends Component {
     }
 
     render() {
+        if(!this.props.loggedIn){
+            return <Redirect to="/" />
+        }
         if (this.state.redirectTo) {
             return <Redirect to={this.state.redirectTo} />
         }
@@ -142,37 +155,42 @@ class Welcome extends Component {
                 {this.state.tasks.length ? (
                     <div style={styles.grid}>
                         {this.state.tasks.map(task => (
-                            <div key={task.id}>
-                            <div className="card" key={task.id}>
-                                <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
-                                <h4 className="card-block" style={styles.preProject} onClick={this.handleProject}>
-                                    {task.taskname}
-                                </h4>
-                                <p style={styles.project}>Project: {task.Project.projectname}</p>
-                            </div>
-                            <div></div>
-                            </div>
+                            <Task welcomePage={true} taskId={task.id} projectName={task.Project.projectname} />
+                            // <div key={task.id}>
+                            // <div className="card" style={styles.cardStyle} key={task.id}>
+                            //     <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
+                            //     <h6 className="card-block" style={styles.preProject} onClick={()=>this.handleProject(task.Project.id,task.id)}>
+                            //         {task.taskname}
+                            //     </h6>
+                            //     <p style={styles.project}>Project: {task.Project.projectname}</p>
+                            // </div>
+                            // <div></div>
+                            // </div>
                         )
                         )}
                     </div>
                          ) : (
                             <div style={styles.grid}>
-                                {/* <div className="card">
+                                <div className="card" style={styles.cardStyle}>
                                 <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
                                 <h4 className="card-block" style={styles.preProject} >
                                 </h4>
-                                </div> */}
+                                </div>
                             </div>
                             )} 
                     <br/>
                 <div style={styles.projectContent}><h4>Projects</h4></div>
                     {this.state.projects.map(project =>(
                         <div  key ={project.id}>
-                        <div>
-                        <p onClick={this.handleProject}>{project.projectname}</p> <span data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}><i className="fas fa-edit" data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}></i></span>    
+                        <div className="col-12">
+                            <label style={styles.projectLbl} onClick={()=>this.handleProject(project.id)}>{project.projectname}</label> 
+                            {/* <span data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}> */}
+                                <i className="fas fa-edit" data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}>
+                                </i>
+                            {/* </span>     */}
                         </div>
                         <div>
-                        <Modal isOpen={this.state.updateModal}>
+                        <Modal isOpen={this.state.updateModal} >
                             <form onSubmit={this.handleFormUpdate} data-id={this.state.projectId} >
                                 <ModalHeader>Update Project Name</ModalHeader>
                                 <ModalBody>

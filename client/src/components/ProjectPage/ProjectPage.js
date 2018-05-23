@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import {Route} from 'react-router-dom';
 import TaskGroup from '../TaskGroup';
+import Task from "../Task";
 import {Wrapper, Col, Row} from "../BootstrapGrid";
 import { Redirect } from "react-router-dom";
 
 
 class ProjectPage extends Component {
+  
 
   render() {
+    console.log(this.props.projectId);
     if(!this.props.loggedIn){
       return <Redirect to="/" />
     }
@@ -16,8 +20,11 @@ class ProjectPage extends Component {
           <Row>
           <Col>
             <TaskGroup
+              projectId = {this.props.projectId}
+              user = {this.props.user}
               header='To-Do'
               id='1'/>
+              
           </Col>
           <Col>
             <TaskGroup 
