@@ -4,6 +4,12 @@ const router = require("express").Router();
 
 const db = require("../models");
 
+router.get("/", (req, res) =>{
+  db.User.findAll(req.query)
+  .then(dbUser=> res.json(dbUser))
+  .catch(err => console.log(err))
+})
+
 router.post("/signup", (req, res) => {
   db.User.create(req.body)
     .then((results) =>{

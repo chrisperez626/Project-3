@@ -18,7 +18,7 @@
     position: relative;
     float: left;
     width:  400px;
-    height: 550px;
+    height: 550cpx;
     background-position: 50% 50%;
     background-repeat:   no-repeat;
     background-size:     cover;
@@ -26,10 +26,6 @@
   
 }
 
-.imgcol
-{
-  margin-left: 10%;
-}
 
 .contentheader
 {
@@ -40,6 +36,7 @@
 .contentrow
 {
  width: 100%;
+ flex-flow: nowrap;
 }
 .header-content{
   margin-top: 10%;
@@ -59,5 +56,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
+}
+
+.imgcol
+{
+  max-width: 33.333333%;
+    margin-left: -100px;
+    margin-right: 86px;
 }
 

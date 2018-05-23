@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import MainMastDetails from "./components/MainMastDetails";
 import MainContentDetails from "./components/MainContentDetails";
 import Content1 from "./components/Content1";
+import WhiteboardMastDetails from "./components/WhiteboardMastDetails";
 
 
 
@@ -88,7 +89,7 @@ class App extends Component {
                                                 mainContent={<Welcome loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user} />} />}/> */}
 
     <Route exact path="/whiteboard" render={() => <Main
-                                                mastHeadContent={<MainMastDetails />} 
+                                                mastHeadContent={<WhiteboardMastDetails />} 
                                                 mainContent={<Whiteboard />}/>} />
 
     <Route exact path="/profile" render={() => <Main
