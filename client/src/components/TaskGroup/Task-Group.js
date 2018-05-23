@@ -75,7 +75,7 @@ class TaskGroup extends Component {
                                                     status={task.status}
                                                     description={task.description} />
                                             )
-                                    console.log(task)})}
+                                    })}
                                 </div>
                             )
                             :

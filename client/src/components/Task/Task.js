@@ -10,10 +10,28 @@ class Task extends Component{
         status: this.props.status,
         comments:[],
         description:this.props.description,
-        taskName: this.props.content
+        taskName: this.props.content,
+        comment: "",
+        Users: [],
+        userId: ""
     }
+    getComments = () => {
+        API.getTaskComments(this.props.id)
+        .then(res=>{
+            this.setState({comments: res.data})
+        })
+        .catch(err => console.log(err))
+    }
+
+    getUsers = () => {
+        API.getAllUsers()
+        .then(res => this.setState({Users: res.data}))
+        .catch(err => console.log(err))
+    }
+    
     componentDidMount=()=>{
-        API
+        this.getComments();
+        this.getUsers();
     }
 
     modalPopup = () =>{
@@ -27,7 +45,7 @@ class Task extends Component{
     handleInputChange = event =>{
         event.preventDefault()
         const {name, value} = event.target
-        this.setState({[name]: value})
+        this.setState({[name]: value}) 
     }
 
     onSelect = event =>{
@@ -35,7 +53,14 @@ class Task extends Component{
     }
 
     onSubmit = event =>{
-        API.updateTask(this.props.id, {taskname: this.state.taskName, status: this.state.status, description: this.state.description})
+        API.updateTask(this.props.id, {taskname: this.state.taskName, status: this.state.status, description: this.state.description, UserId: this.state.userId})
+    }
+
+    onClickSubmit = event =>{
+        event.preventDefault()
+        API.saveComment({comment: this.state.comment, TaskId: this.props.id})
+        .then(res=>this.getComments())
+        .catch(err => console.log(err))
     }
 
     render(){
@@ -75,8 +100,25 @@ class Task extends Component{
                                 <textarea placeholder="Change description here" name="description" onChange={this.handleInputChange}/>
                                 <br/>
                                 <h4>Comments</h4>
-                                <input type="text"/>
-                                <Button>Submit</Button>
+                                {this.state.comments.map(comment =>{
+                                    return(
+                                        <div className="card">{comment.comment}</div>
+                                    )
+                                })}
+                                <input name="comment" onChange={this.handleInputChange} type="text"/>
+                                <br/>
+                                <br/>
+                                <Button type="submit" onClick={this.onClickSubmit}>Submit</Button>
+                                <br/>
+                                <h3>Assign Task</h3>
+                                <select placeholder="mook" onChange={this.handleInputChange} name="userId" className="dropdown">
+                                    <option selected='selected'>Choose User</option>
+                                    {this.state.Users.map(user => {
+                                        return(
+                                            <option value={user.id}>{user.firstname}</option>
+                                        )
+                                    })}
+                                </select>
                             </ModalBody>
                             <ModalFooter>
                                 <Button type="submit">Submit</Button>

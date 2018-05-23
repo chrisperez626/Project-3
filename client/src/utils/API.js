@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export default {
+  getAllUsers: () => axios.get('/auth'),
+
   getCurrentUser: function(){
     return axios.get("/auth/getUser");
   },
@@ -53,5 +55,8 @@ export default {
   },
   deleteTask: function(id){
     return axios.delete("/api/tasks/"+id);
-  }
+  },
+  getAllComments: () => axios.get('/api/taskComments'),
+  saveComment: commentData => axios.post('/api/taskComments', commentData),
+  getTaskComments: id => axios.get('/api/taskComments/'+id)
 }
