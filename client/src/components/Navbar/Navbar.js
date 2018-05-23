@@ -24,7 +24,7 @@ const Navbar = ({loggedIn, logout, user}) => {
                   <Link className="nav-utm nav-link" to="/Whiteboard">Whiteboard</Link>
                 </li>,
                 <li className="nav-item" key="user">
-                  <a className="nav-link js-scroll-trigger" href="#">{user.firstname}</a>
+                  <a className="nav-link js-scroll-trigger" href="#"></a>
                 </li>
               ]
             : 
