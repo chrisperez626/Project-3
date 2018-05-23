@@ -36,6 +36,7 @@ const MainContentDetails = () => {
 
 
         <div className="row contentrow">
+
         <div style={styles.grid}>
           <div className="col-4 imgcol">
             <Card>

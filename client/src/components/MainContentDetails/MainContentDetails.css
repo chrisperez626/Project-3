@@ -52,9 +52,16 @@
   margin-top: 150px;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
 .imgcol
 {
   max-width: 33.333333%;
     margin-left: -100px;
     margin-right: 86px;
 }
+
