@@ -44,7 +44,7 @@ class Login extends Component{
           <br></br>
           <label>Password: </label>
           <input name="password" type="password" class="form-control" placeholder="password" value={this.state.password} onChange={this.handleInputChange}></input>
-          <button onClick={this.handleLogin} class="express-btn btn btn-primary btn-xl rounded-pill mt-5" >Login</button>
+          <button onClick={this.handleLogin} class="express-btn btn btn-primary btn-xl rounded-pill mt-5 loginbtn" >Login</button>
         </div>
       </form>
       </Wrapper>

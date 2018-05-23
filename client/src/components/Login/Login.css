@@ -4,7 +4,7 @@ label
 }
 
 .btn-primary {
-    background-color: #cf353f;
+    background-color: indianred;
     border-color: black;
   }
   
@@ -35,7 +35,9 @@ label
     box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
   }
  
-  .form-control
+  .loginbtn
   {
-      background-color: white;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
   }
