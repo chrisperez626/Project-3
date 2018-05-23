@@ -24,6 +24,7 @@ class TaskGroup extends Component {
 
     componentDidMount = () => {
         this.loadTasks()
+        
     }
 
     newTask = () => {
@@ -71,7 +72,8 @@ class TaskGroup extends Component {
                                                     key={task.id}
                                                     id={task.id}
                                                     content={task.taskname}
-                                                    status={task.status} />
+                                                    status={task.status}
+                                                    description={task.description} />
                                             )
                                     })}
                                 </div>
@@ -80,9 +82,9 @@ class TaskGroup extends Component {
                             (
                                 <div>
                                     <form onSubmit={this.submitTask}>
-                                        <textarea id='newTask' placeholder='Add new task here' onChange={this.handleInputChange} ></textarea>
-                                        <br />
-                                        <button type='submit'>Add Task</button>
+                                        <textarea id='newTask' placeholder='Add new task here' onChange={this.handleInputChange}/>
+                                        <br/>
+                                        <button type='submit'>Add Task</button><span>    </span>
                                         <button onClick={this.newTask}>Cancel</button>
                                     </form>
                                 </div>
