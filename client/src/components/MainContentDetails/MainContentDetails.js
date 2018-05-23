@@ -2,7 +2,21 @@ import React from 'react';
 import "./MainContentDetails.css";
 import { Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
 
-
+const styles={
+  grid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gridGap: "10px",
+    width:"300px",
+    height:"500px",
+    
+  },
+  
+  contentimg:{
+    width:"300px",
+    height:"300px"
+  }
+}
 
 
 const MainContentDetails = () => {
@@ -22,8 +36,9 @@ const MainContentDetails = () => {
 
 
         <div className="row contentrow">
-        <div class="grid">
-          <div className="col4 imgcol">
+
+        <div style={styles.grid}>
+          <div className="col-4 imgcol">
             <Card>
               <CardImage className="contentimg" src={require("../../img/whiteboard.jpg")}  /> 
                 <CardBody>
@@ -32,8 +47,7 @@ const MainContentDetails = () => {
                 </CardBody>
             </Card>
           </div>
-
-          <div className="col4 imgcol">
+          <div className="col-4 imgcol">
             <Card>
               <CardImage className="contentimg" src={require("../../img/logos.jpg")}  /> 
                 <CardBody>
@@ -43,7 +57,7 @@ const MainContentDetails = () => {
             </Card>
           </div>
 
-          <div className="col4 imgcol">
+          <div className="col-4 imgcol">
             <Card>
               <CardImage className="contentimg" src={require("../../img/speech.jpg")}  /> 
                 <CardBody>

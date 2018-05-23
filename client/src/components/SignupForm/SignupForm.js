@@ -1,17 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import {Wrapper, Row, Col} from "../BootstrapGrid"
+import {Wrapper} from "../BootstrapGrid"
 import API from "../../utils/API";
 
-
-const styles = {
-  header: {
-    color: "orange",
-    borderStyle: "solid",
-    borderWidth: "1px",
-    textAlign: "center"
-  }
-}
 
 class SignupForm extends Component {
   state = {
@@ -29,7 +20,17 @@ class SignupForm extends Component {
 
   handleSignUp = event => {
     event.preventDefault();
-    API.signUp({ firstname: this.state.firstname, lastname:this.state.lastname, email: this.state.email, password: this.state.password})
+    const initial = (this.state.firstname.charAt(0)+this.state.lastname.charAt(0)).toUpperCase();
+    console.log(initial);
+    const user ={
+      firstname: this.state.firstname, 
+      lastname:this.state.lastname, 
+      email: this.state.email, 
+      password: this.state.password,
+      initial: initial
+    }
+    console.log(user);
+    API.signUp(user)
     .then(() => this.setState({
       redirectTo: "/login"
     }));
@@ -42,49 +43,28 @@ class SignupForm extends Component {
     return (
  
       <Wrapper>
-        <Row>
-          <Col>
-            <h1 style={styles.header}>Signup Form</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={2} offset={3}>
-            <label>Firstname: </label>
-          </Col>
-          <Col span={3}>
-            <input name="firstname" type="text" value={this.state.firstname} onChange={this.handleInputChange} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={2} offset={3}>
-            <label>Lastname: </label>
-          </Col>
-          <Col span={3}>
-            <input name="lastname" type="text" value={this.state.lastname} onChange={this.handleInputChange} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={2} offset={3}>
-            <label>Email: </label>
-          </Col>
-          <Col span={3}>
-            <input name="email" type="text" value={this.state.email} onChange={this.handleInputChange} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={2} offset={3}>
-            <label>Password: </label>
-          </Col>
-          <Col span={4}>
-            <input name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={2} offset={3}>
-            <button onClick={this.handleSignUp}>Submit</button>
-          </Col>
-        </Row>
+
+
+        <form className="create-form">
+        <div className="form-group">
+          <label>First Name: </label>
+          <input name="firstname" type="text" className="form-control" placeholder="first name" value={this.state.firstname} onChange={this.handleInputChange}></input>
+          <br></br>
+          <label>Last Name: </label>
+          <input name="lastname" type="text" className="form-control" placeholder="last name" value={this.state.lastname} onChange={this.handleInputChange}></input>
+          <br></br>
+          <label>Email: </label>
+          <input name="email" type="text" className="form-control" placeholder="email" value={this.state.email} onChange={this.handleInputChange}></input>
+          <br></br>
+          <label>Password: </label>
+          <input name="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={this.handleInputChange}></input>
+          <button onClick={this.handleSignUp} className="express-btn btn btn-primary btn-xl rounded-pill mt-5">Login</button>
+        </div>
+      </form>
+
+
       </Wrapper>
+ 
  
     )
   }

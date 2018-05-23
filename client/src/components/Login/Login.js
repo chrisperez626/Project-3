@@ -1,17 +1,9 @@
 import React, {Component} from "react";
 import { Redirect } from "react-router-dom";
-import { Wrapper, Row, Col } from "../BootstrapGrid";
+import { Wrapper} from "../BootstrapGrid";
 import API from "../../utils/API";
+import "./Login.css";
 
-
-const styles = {
-  header: {
-    color: "purple",
-    borderStyle: "solid",
-    borderWidth: "1px",
-    textAlign: "center"
-  }
-}
 
 class Login extends Component{ 
   state = {
@@ -42,33 +34,19 @@ class Login extends Component{
     }
     return (
       <Wrapper>
-        <Row>
-          <Col>
-            <h1 style={styles.header}>Login</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={2} offset={3}>
-            <label>Email: </label>
-          </Col>
-          <Col span={3}>
-            <input name="email" type="text" value={this.state.email} onChange={this.handleInputChange} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={2} offset={3}>
-            <label>Password: </label>
-          </Col>
-          <Col span={4}>
-            <input name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
-          </Col>
-        </Row>
-        <Row>
-          <Col span={2} offset={3}>
-            <button onClick={this.handleLogin}>Submit</button>
-          </Col>
-        </Row>
 
+
+
+<form className="create-form">
+        <div className="form-group">
+          <label>Email: </label>
+          <input name="email" type="text" className="form-control" placeholder="email" value={this.state.email} onChange={this.handleInputChange}></input>
+          <br></br>
+          <label>Password: </label>
+          <input name="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={this.handleInputChange}></input>
+          <button onClick={this.handleLogin} className="express-btn btn btn-primary btn-xl rounded-pill mt-5 loginbtn" >Login</button>
+        </div>
+      </form>
       </Wrapper>
     );
   }

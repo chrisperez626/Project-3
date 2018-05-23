@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Route} from 'react-router-dom';
 import './Task-Group.css';
 import API from '../../utils/API';
 import Task from '../Task';
@@ -36,21 +37,18 @@ class TaskGroup extends Component {
     submitTask = event => {
         // event.preventDefault()
         this.setState({ NewTask: !this.state.NewTask })
-        API.saveTask({ taskname: this.state.taskName, status: this.props.header, UserId: "1", ProjectId: '2' })
+        API.saveTask({taskname: this.state.taskName, status: this.props.header, UserId: this.props.user.id, ProjectId: this.props.projectId})
         .then(data=>{
             this.loadTasks()
         })
         .catch(err=>{
             console.log(err)
         })
-        
-
     }
 
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({ taskName: value });
-
     }
 
     render() {
@@ -70,10 +68,10 @@ class TaskGroup extends Component {
                                             return (
                                                 <Task
                                                     key={task.id}
-                                                    id={task.id}
-                                                    content={task.taskname}
-                                                    status={task.status}
-                                                    description={task.description} />
+                                                    taskId={task.id} />
+                                                    // id={task.id}
+                                                    // description={task.description} />
+
                                             )
                                     })}
                                 </div>

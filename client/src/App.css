@@ -8,6 +8,8 @@ body {
   font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+
+
 a {
   color: #fdcc52;
   -webkit-transition: all .35s;
@@ -451,4 +453,42 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .txtimg{
   margin-left: -100px;
   margin-top: 150px;
+}
+
+.btn-primary {
+  background-color: #cf353f;
+  border-color: black;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background-color: black !important;
+  border-color: #cf353f !important;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(187, 8, 8, 0.5);
+}
+
+.btn-secondary {
+  background-color: #cf353f;
+  border-color: #cf353f;
+}
+
+.btn-secondary:active,
+.btn-secondary:focus,
+.btn-secondary:hover {
+  background-color: #cf353f !important;
+  border-color: black !important;
+}
+
+.btn-secondary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
+}
+
+.wbbtn
+{
+  background-color: indianred;
+  margin-right: 0%;
 }

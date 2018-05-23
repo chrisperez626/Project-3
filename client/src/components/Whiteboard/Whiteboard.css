@@ -1,22 +1,4 @@
-/* :root {
-    --yellow: #ffc600;
-    --black: #272727;
-  }
-  
-  html {
-    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-weight: 900;
-    font-size: 16px;
-    color: var(--black);
-    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
-  }
-  
-  body {
-    background-image: linear-gradient(110deg, #f93d66, #6d47d9);
-    margin: 50px;
-    background-position: fixed;
-  } */
+
   
   span {
     background-color: darkgrey;
@@ -39,7 +21,48 @@
     width: 50px;
   }
 
-  .canvas {
-      width: 100%;
-      height: 100%;
+  canvas {
+      margin-left: -200px;
+      margin-top: 10px;
+      outline: indianred 15px solid;
+  }
+
+
+
+  .btn-primary {
+    background-color: #cf353f;
+    border-color: black;
+  }
+  
+  .btn-primary:active,
+  .btn-primary:focus,
+  .btn-primary:hover {
+    background-color: black !important;
+    border-color: #cf353f !important;
+  }
+  
+  .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(187, 8, 8, 0.5);
+  }
+  
+  .btn-secondary {
+    background-color: #cf353f;
+    border-color: #cf353f;
+  }
+  
+  .btn-secondary:active,
+  .btn-secondary:focus,
+  .btn-secondary:hover {
+    background-color: #cf353f !important;
+    border-color: black !important;
+  }
+  
+  .btn-secondary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
+  }
+
+  .wbbtn
+  {
+    background-color: indianred;
+    margin-right: 0%;
   }
