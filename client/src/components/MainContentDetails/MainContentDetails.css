@@ -13,6 +13,19 @@
   
 }
 
+.view, .card
+{
+    position: relative;
+    float: left;
+    width:  400px;
+    height: 550px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+  border-radius: 8px;
+  
+}
+
 .imgcol
 {
   margin-left: 10%;

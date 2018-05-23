@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { Wrapper, Row, Col } from "../BootstrapGrid";
 import API from "../../utils/API";
 
+
 const styles = {
   header: {
     color: "purple",
@@ -67,9 +68,12 @@ class Login extends Component{
             <button onClick={this.handleLogin}>Submit</button>
           </Col>
         </Row>
+
       </Wrapper>
     );
   }
 }
 
 export default Login;
+
+

@@ -20,8 +20,10 @@ const MainContentDetails = () => {
           </div>
         </div>
 
+
         <div className="row contentrow">
-          <div className="col-4 imgcol">
+        <div class="grid">
+          <div className="col4 imgcol">
             <Card>
               <CardImage className="contentimg" src={require("../../img/whiteboard.jpg")}  /> 
                 <CardBody>
@@ -31,7 +33,7 @@ const MainContentDetails = () => {
             </Card>
           </div>
 
-          <div className="col-4 imgcol">
+          <div className="col4 imgcol">
             <Card>
               <CardImage className="contentimg" src={require("../../img/logos.jpg")}  /> 
                 <CardBody>
@@ -41,7 +43,7 @@ const MainContentDetails = () => {
             </Card>
           </div>
 
-          <div className="col-4 imgcol">
+          <div className="col4 imgcol">
             <Card>
               <CardImage className="contentimg" src={require("../../img/speech.jpg")}  /> 
                 <CardBody>
@@ -51,6 +53,7 @@ const MainContentDetails = () => {
             </Card>
           </div>
 
+          </div>
           </div>
       </div>
          
