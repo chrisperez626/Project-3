@@ -11,9 +11,11 @@ const Masthead = ({loggedIn, logout, user, children }) => {
       !loggedIn ?
       <div className="masthead">
       <div className="container h-60">
-     
+      {/* <div className="row"> */}
+            {/* <div className="col-12"> */}
         {children}
-   
+      {/* </div> */}
+      {/* </div> */}
       </div>
     </div>
     :
