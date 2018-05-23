@@ -69,8 +69,8 @@ class TaskGroup extends Component {
                                                 <Task
                                                     key={task.id}
                                                     taskId={task.id} />
-                                                    id={task.id}
-                                                    description={task.description} />
+                                                    // id={task.id}
+                                                    // description={task.description} />
 
                                             )
                                     })}

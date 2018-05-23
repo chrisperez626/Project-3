@@ -139,7 +139,7 @@ class Task extends Component{
                                onSelect={this.onSelect}
                                handleInputChange={this.handleInputChange}
                                modalPopup={this.modalPopup} />
-                </a>
+                {/* </a>
                 <div>
                     <Modal isOpen={this.state.modal}>
                         <form onSubmit={this.onSubmit}>
@@ -194,6 +194,7 @@ class Task extends Component{
                             </ModalFooter>
                         </form>
                     </Modal>
+                </div> */}
                 </div>
             );
         }
