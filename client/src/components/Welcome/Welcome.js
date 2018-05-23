@@ -4,12 +4,18 @@ import API from "../../utils/API";
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 const styles = {
+    body:{
+        paddingTop:"100px"
+    },
     grid: {
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
         gridGap: "10px",
         height: "100px",
         color:"black"
+    },
+    projectContent:{
+        paddingTop:"200px"
     },
     project:{
         textAlign:"center"
@@ -43,7 +49,6 @@ class Welcome extends Component {
         this.updateToggle = this.updateToggle.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
-        console.log("User inside Welcome:", this.props.user);        
     }
     
     componentDidMount() {
@@ -128,15 +133,14 @@ class Welcome extends Component {
     }
 
     render() {
-        console.log("in welcome",this.state.user)
         if (this.state.redirectTo) {
             return <Redirect to={this.state.redirectTo} />
         }
         return (
-            <div className="container">
+            <div className="container" style={styles.body}>
                 <h2>Tasks</h2>
                 {this.state.tasks.length ? (
-                    <div className="grid" style={styles.grid}>
+                    <div style={styles.grid}>
                         {this.state.tasks.map(task => (
                             <div key={task.id}>
                             <div className="card" key={task.id}>
@@ -152,7 +156,7 @@ class Welcome extends Component {
                         )}
                     </div>
                          ) : (
-                            <div className="grid mx-auto" style={styles.grid}>
+                            <div style={styles.grid}>
                                 {/* <div className="card">
                                 <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
                                 <h4 className="card-block" style={styles.preProject} >
@@ -161,7 +165,7 @@ class Welcome extends Component {
                             </div>
                             )} 
                     <br/>
-                <div><h4>Projects</h4></div>
+                <div style={styles.projectContent}><h4>Projects</h4></div>
                     {this.state.projects.map(project =>(
                         <div  key ={project.id}>
                         <div>

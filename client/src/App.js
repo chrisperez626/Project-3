@@ -6,6 +6,7 @@ import Whiteboard from "./components/Whiteboard";
 import ProjectPage from "./components/ProjectPage";
 import Navbar from "./components/Navbar";
 import Masthead from "./components/Masthead";
+import Profile from "./components/Profile";
 import API from './utils/API';
 
 import Footer from "./components/Footer";
@@ -42,7 +43,6 @@ class App extends Component {
  componentDidMount() {
    API.getCurrentUser()
    .then(res => {
-       console.log("Should be a null", res.data);
      this.setState({
        user: res.data,
        loggedIn: res.data || false
@@ -54,7 +54,6 @@ class App extends Component {
  }
 
  render() {
-   console.log("in app js", this.state.user)
    return (
      <Router>
        <div>
@@ -63,6 +62,7 @@ class App extends Component {
          <Route exact path="/signup" component={SignupForm} />
          <Route exact path="/login" render={() => <Login setUser={this.setUser} />} />
          <Route exact path="/whiteboard" component={Whiteboard}/>
+         <Route exact path="/profile" component={Profile}/>
          <Route exact path="/projectpage" render={() => <ProjectPage loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user}/>}/>
          <Footer loggedIn={this.state.loggedIn} logout={this.handleLogout} />
 

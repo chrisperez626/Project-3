@@ -29,7 +29,17 @@ class SignupForm extends Component {
 
   handleSignUp = event => {
     event.preventDefault();
-    API.signUp({ firstname: this.state.firstname, lastname:this.state.lastname, email: this.state.email, password: this.state.password})
+    const initial = (this.state.firstname.charAt(0)+this.state.lastname.charAt(0)).toUpperCase();
+    console.log(initial);
+    const user ={
+      firstname: this.state.firstname, 
+      lastname:this.state.lastname, 
+      email: this.state.email, 
+      password: this.state.password,
+      initial: initial
+    }
+    console.log(user);
+    API.signUp(user)
     .then(() => this.setState({
       redirectTo: "/login"
     }));
