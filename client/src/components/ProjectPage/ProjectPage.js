@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom';
 import TaskGroup from '../TaskGroup';
 import Task from "../Task";
 import {Wrapper, Col, Row} from "../BootstrapGrid";
-// import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 
 class ProjectPage extends Component {
