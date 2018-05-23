@@ -1,0 +1,57 @@
+
+
+.contentimg
+{
+    position: relative;
+    float: left;
+    width:  400px;
+    height: 400px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+  border-radius: 8px;
+  
+}
+
+.view, .card
+{
+    position: relative;
+    float: left;
+    width:  400px;
+    height: 550px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+  border-radius: 8px;
+  
+}
+
+.imgcol
+{
+  margin-left: 10%;
+}
+
+.contentheader
+{
+  color: white;
+  overflow: auto;
+}
+
+.contentrow
+{
+ width: 100%;
+}
+.header-content{
+  margin-top: 10%;
+}
+
+.txtcol{
+  margin-left: -125px;
+  margin-top: 200px;
+}
+
+.txtimg{
+  margin-left: -100px;
+  margin-top: 150px;
+}
+
