@@ -10,7 +10,7 @@ import Content1 from "./components/Content1";
 import API from './utils/API';
 import Footer from "./components/Footer";
 import MainMastDetails from "./components/MainMastDetails";
-import "./App.css";
+import MainContentDetails from "./components/MainContentDetails";
 
 
 
@@ -63,16 +63,13 @@ class App extends Component {
     return (
       <Router>
         <div>
-
-          <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} />
-
-    {/* <Route exact path="/" render={() => <Masthead loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user} text="main page"><MainMastDetails /> </Masthead>}/> */}
+    <Navbar loggedIn={this.state.loggedIn} logout={this.handleLogout} />
 
      <Route exact path="/" render={() => <Main  loggedIn={this.state.loggedIn}
                                                 logout={this.handleLogout}
                                                 user={this.state.user} 
                                                 mastHeadContent={<MainMastDetails />} 
-                                                mainContent={<SignupForm />}/>} />
+                                                mainContent={<MainContentDetails  />}/>} />
 
 
     <Route exact path="/signup" render={() => <Main
@@ -89,12 +86,11 @@ class App extends Component {
                                                 mainContent={<Whiteboard />}/>} />
 
 
-<Route exact path="/projectpage" render={() => <Main
+    <Route exact path="/projectpage" render={() => <Main
                                                 mastHeadContent={<MainMastDetails />} 
                                                 mainContent={<ProjectPage loggedIn={this.state.loggedIn} />} />}/>
 
-
-          <Footer loggedIn={this.state.loggedIn} logout={this.handleLogout} />
+    <Footer loggedIn={this.state.loggedIn} logout={this.handleLogout} />
 
         </div>
       </Router>

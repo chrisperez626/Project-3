@@ -10,10 +10,10 @@ const Masthead = ({loggedIn, logout, user, children }) => {
     return (
       !loggedIn ?
       <div className="masthead">
-      <div className="container h-100">
-        <div className="row h-100">
+      <div className="container h-60">
+     
         {children}
-        </div>
+   
       </div>
     </div>
     :
