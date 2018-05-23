@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import "./Navbar.css";
 
 const Navbar = ({loggedIn, logout, user}) => {
@@ -22,10 +22,12 @@ const Navbar = ({loggedIn, logout, user}) => {
                 <li className="nav-item" key="whiteboard">
                   {/* <a className="nav-link js-scroll-trigger" href="#features">Manage Project</a> */}
                   <Link className="nav-utm nav-link" to="/Whiteboard">Whiteboard</Link>
-                </li>,
-                <li className="nav-item" key="user">
-                  <a className="nav-link js-scroll-trigger" href="#">{user.firstname}</a>
                 </li>
+                
+                // ,
+                // <li className="nav-item" key="user">
+                //   <a className="nav-link js-scroll-trigger" href="#">{user.firstname}</a>
+                // </li>
               ]
             : 
               [

@@ -11,6 +11,7 @@ import API from './utils/API';
 import Footer from "./components/Footer";
 import MainMastDetails from "./components/MainMastDetails";
 import MainContentDetails from "./components/MainContentDetails";
+import WhiteboardMastDetails from "./components/WhiteboardMastDetails";
 
 
 
@@ -82,7 +83,7 @@ class App extends Component {
 
 
     <Route exact path="/whiteboard" render={() => <Main
-                                                mastHeadContent={<MainMastDetails />} 
+                                                mastHeadContent={<WhiteboardMastDetails />} 
                                                 mainContent={<Whiteboard />}/>} />
 
 

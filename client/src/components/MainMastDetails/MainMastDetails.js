@@ -17,7 +17,7 @@ const MainMastDetails = () => {
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/login">LOGIN</Link>
           </div>
 
-          <div className="col-4 imgcol">
+          <div className="col-4 mastimgcol">
                     <img src={require("../../img/team.jpg")} className="img-fluid mastimg" alt={"pm"}/>
                   </div>
                   <div className="button">

@@ -7,8 +7,8 @@ export default class extends Component {
     loadTimeOffset: 5,
     brushSize: 6,
     brushColor: "#444",
-    canvasWidth: 1600,
-    canvasHeight: 1000,
+    canvasWidth: 1200,
+    canvasHeight: 800,
     disabled: false
   };
 
@@ -204,74 +204,55 @@ export default class extends Component {
 
   render() {
     return (
-        <div className={classNames.tools}>
-          <button
-            onClick={() => {
-              localStorage.setItem(
-                "savedDrawing",
-                this.getSaveData()
-              );
-            }}
-          >
-            Save
-          </button>
-          <button
+
+      <div className="row">
+        <div className="col-11 canvascol">
+          <div className={classNames.tools}>
+    
+                <canvas
+                  width={this.props.canvasWidth}
+                  height={this.props.canvasHeight}
+                  style={{
+                    display: "block",
+                    background: "#fff",
+                    touchAction: "none",
+                    ...this.props.style
+                  }}
+                  ref={canvas => {
+                    if (canvas) {
+                      this.canvas = canvas;
+                      this.ctx = canvas.getContext("2d");
+                    }
+                  }}
+                  onMouseDown={this.drawStart}
+                  onClick={() => false}
+                  onMouseUp={this.drawEnd}
+                  onMouseOut={this.drawEnd}
+                  onMouseMove={this.draw}
+                  onTouchStart={this.drawStart}
+                  onTouchMove={this.draw}
+                  onTouchEnd={this.drawEnd}
+                  onTouchCancel={this.drawEnd}
+                />
+          </div>
+      </div>
+      
+          <div className="col-1 btnscol">  
+          <button className="wbbtn" class="wbbtn express-btn btn btn-primary btn-xl rounded-pill mt-5"
             onClick={() => {
               this.clear();
             }}
           >
             Clear
           </button>
-          <button
+          <button className="wbbtn" class=" wbbtn express-btn btn btn-primary btn-xl rounded-pill mt-5"
             onClick={() => {
               this.undo();
             }}
           >
             Undo
           </button>
-          {/* <div>
-            <label>Width:</label>
-            <input
-              type="number"
-              value={this.props.canvasWidth}
-              onChange={e => this.setState({ canvasWidth: e.target.value })}
-            />
           </div>
-          <div>
-            <label>Height:</label>  
-            <input
-              type="number"
-              value={this.props.canvasHeight}
-              onChange={e => this.setState({ height: e.target.value })}
-            />
-          </div> */}
-    
-
-      <canvas
-        width={this.props.canvasWidth}
-        height={this.props.canvasHeight}
-        style={{
-          display: "block",
-          background: "#fff",
-          touchAction: "none",
-          ...this.props.style
-        }}
-        ref={canvas => {
-          if (canvas) {
-            this.canvas = canvas;
-            this.ctx = canvas.getContext("2d");
-          }
-        }}
-        onMouseDown={this.drawStart}
-        onClick={() => false}
-        onMouseUp={this.drawEnd}
-        onMouseOut={this.drawEnd}
-        onMouseMove={this.draw}
-        onTouchStart={this.drawStart}
-        onTouchMove={this.draw}
-        onTouchEnd={this.drawEnd}
-        onTouchCancel={this.drawEnd}
-      />
       </div>
     );
   }
