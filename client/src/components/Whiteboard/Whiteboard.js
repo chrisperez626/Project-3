@@ -8,7 +8,7 @@ export default class extends Component {
     loadTimeOffset: 5,
     brushSize: 6,
     brushColor: "#444",
-    canvasWidth: 1200,
+    canvasWidth: 1000,
     canvasHeight: 800,
     disabled: false
   };
@@ -208,7 +208,6 @@ export default class extends Component {
       return <Redirect to="/" />
     }
     return (
-
       <div className="row">
         <div className="col-11 canvascol">
           <div className={classNames.tools}>

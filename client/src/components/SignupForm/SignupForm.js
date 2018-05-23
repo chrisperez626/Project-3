@@ -48,17 +48,17 @@ class SignupForm extends Component {
         <form class="create-form">
         <div class="form-group">
           <label>First Name: </label>
-          <input name="firstname" type="text" class="form-control" placeholder="first name" value={this.state.firstname} onChange={this.handleInputChange}></input>
+          <input name="firstname" type="text" className="form-control" placeholder="first name" value={this.state.firstname} onChange={this.handleInputChange}></input>
           <br></br>
           <label>Last Name: </label>
-          <input name="lastname" type="text" class="form-control" placeholder="last name" value={this.state.lastname} onChange={this.handleInputChange}></input>
+          <input name="lastname" type="text" className="form-control" placeholder="last name" value={this.state.lastname} onChange={this.handleInputChange}></input>
           <br></br>
           <label>Email: </label>
-          <input name="email" type="text" class="form-control" placeholder="email" value={this.state.email} onChange={this.handleInputChange}></input>
+          <input name="email" type="text" className="form-control" placeholder="email" value={this.state.email} onChange={this.handleInputChange}></input>
           <br></br>
           <label>Password: </label>
-          <input name="password" type="password" class="form-control" placeholder="password" value={this.state.password} onChange={this.handleInputChange}></input>
-          <button onClick={this.handleSignUp} class="express-btn btn btn-primary btn-xl rounded-pill mt-5">Login</button>
+          <input name="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={this.handleInputChange}></input>
+          <button onClick={this.handleSignUp} className="express-btn btn btn-primary btn-xl rounded-pill mt-5">Login</button>
         </div>
       </form>
 
