@@ -95,11 +95,12 @@ p {
 
 #mainNav .navbar-nav > li > a.active {
   color: #fdcc52 !important;
-  background-color: transparent;
+  background-color: black;
 }
 
 #mainNav .navbar-nav > li > a.active:hover {
-  background-color: transparent;
+  background-color: black;
+  border-color: white;
 }
 
 #mainNav .navbar-nav > li > a,
@@ -115,7 +116,7 @@ p {
 @media (min-width: 992px) {
   #mainNav {
     border-color: transparent;
-    background-color: transparent;
+    background-color: black;
   }
   #mainNav .navbar-brand {
     color: fade(white, 70%);
@@ -440,6 +441,8 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .btn-xl {
   font-size: 11px;
   padding: 15px 45px;
+  margin-left: 15px;
+    margin-right: 15px;
 }
 
 .mastimg

@@ -57,7 +57,7 @@ section h2 {
 
 #mainNav {
   border-color: rgba(34, 34, 34, 0.05);
-  background-color: white;
+  background-color: black;
   -webkit-transition: all .35s;
   -moz-transition: all .35s;
   transition: all .35s;
@@ -92,11 +92,11 @@ section h2 {
 
 #mainNav .navbar-nav > li > a.active {
   color: #fdcc52 !important;
-  background-color: transparent;
+  background-color: black;
 }
 
 #mainNav .navbar-nav > li > a.active:hover {
-  background-color: transparent;
+  background-color: black;
 }
 
 #mainNav .navbar-nav > li > a,
@@ -112,7 +112,7 @@ section h2 {
 @media (min-width: 992px) {
   #mainNav {
     border-color: transparent;
-    background-color: transparent;
+    background-color: black;
   }
   #mainNav .navbar-brand {
     color: fade(white, 70%);
@@ -448,4 +448,26 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
   color: #fff;
   background-color: indianred;
   border-color: white;
+}
+
+.chdr
+{
+    background-color: indianred;
+}
+
+.btn-primary
+{
+  color: #fff;
+  background-color: indianred;
+  border-color: white;
+}
+
+.inputbox
+{
+    background-color: white;
+}
+
+.card
+{    margin-left: -21px;
+      width: 300px; 
 }

@@ -54,8 +54,8 @@ class TaskGroup extends Component {
     render() {
         return (
             <div>
-                <div id={this.props.id} className='card'>
-                    <header id={this.props.id} className=' card-header text-center'>{this.props.header}</header>
+                <div id={this.props.id} className='card mycard'>
+                    <header id={this.props.id} className=' card-header text-center chdr'>{this.props.header}</header>
                     <div className='card-body'>
                         {!this.state.NewTask ?
                             (

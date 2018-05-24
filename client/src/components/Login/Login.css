@@ -38,6 +38,11 @@ label
   .loginbtn
   {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: indianred;
+    border-color: white;
+  }
+
+  .inputbox
+  {
+      background-color: white;
   }
