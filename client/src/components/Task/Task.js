@@ -51,10 +51,10 @@ class Task extends Component{
         welcomePage: this.props.welcomePage,
         comment: "",
         Users: [],
-        userId: ""
+        userId: "",
     }
     getComments = () => {
-        API.getTaskComments(this.props.id)
+        API.getTaskComments(this.props.taskId)
         .then(res=>{
             this.setState({comments: res.data})
         })
@@ -68,11 +68,10 @@ class Task extends Component{
     }
     
     componentDidMount=()=>{
-        console.log("TASKID: ", this.props.taskId);
         API.getTask(this.props.taskId)
         .then(res => {
-            console.log(res);
             this.setState({
+                description: res.data.description,
                 taskName: res.data.taskname,
                 status: res.data.status,
                 modal: this.props.show || false
@@ -102,7 +101,7 @@ class Task extends Component{
     }
 
     onSubmit = event =>{
-        API.updateTask(this.props.taskId, {taskname: this.state.taskName, status: this.state.status, description: this.state.description, UserId: "1", ProjectId: "1"})
+        API.updateTask(this.props.taskId, {taskname: this.state.taskName, status: this.state.status, dueDate: this.state.dueDate,description: this.state.description, UserId: "1", ProjectId: "1"})
     }
 
     onClickSubmit = event =>{
@@ -114,7 +113,6 @@ class Task extends Component{
 
 
     render(){
-        console.log("WELvbfghf", this.state.welcomePage)
         if(this.state.welcomePage){
             return(
                 <div key={this.state.taskId}>
@@ -137,7 +135,8 @@ class Task extends Component{
                         modalPopup={this.modalPopup}
                         comments={this.state.comments}
                         Users={this.state.Users}
-                        description={this.props.description} />
+                        description={this.state.description}
+                        onClickSubmit={this.onClickSubmit} />
 
 
 
@@ -165,7 +164,8 @@ class Task extends Component{
                                modalPopup={this.modalPopup}
                                comments={this.state.comments}
                                Users={this.state.Users}
-                               description={this.props.description} />
+                               description={this.state.description}
+                               onClickSubmit={this.onClickSubmit} />
                     </div>
                </div> 
             )
@@ -173,9 +173,8 @@ class Task extends Component{
     }
 }
 
-const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect, handleInputChange, modalPopup, comments, Users, description}) => {
+const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect, handleInputChange, modalPopup, comments, Users, description, onClickSubmit}) => {
     return (
-        console.log(comments),
         <Modal isOpen={show}>
             <form onSubmit={onSubmit}>
                 <ModalHeader>
@@ -200,7 +199,7 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     <input name="taskName" onChange={handleInputChange} type="text" defaultValue={taskName}/>
                     <br/>
                     <h3>Description</h3>
-                    <div className='card'>{description}</div>
+                    <div className='card text-center'><strong>{description}</strong></div>
                     <textarea name="description" onChange={handleInputChange}/>
                     <br/>
                     <h4>Comments</h4>
@@ -209,11 +208,12 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                         return (
                             <div className="card">{comment.comment}</div>
                         )
+                        
                     })}
-                    <input name="comment" onChange={this.handleInputChange} type="text" />
+                    <input name="comment" onChange={handleInputChange} type="text" />
                     <br />
                     <br />
-                    <Button type="submit" onClick={this.onClickSubmit}>Submit</Button>
+                    <Button type="submit" onClick={onClickSubmit}>Submit</Button>
                     <br />
                     <br />
                     <h3>Assign Task</h3>
@@ -227,9 +227,9 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     </select>
                     <br/>
                     <br />
+                    <div>Due Date:</div>
                     <h3>Due Date</h3>
-
-                    <input onChange={this.handleInputChange} name="dueDate" type="date"/>
+                    <input onChange={handleInputChange} name="dueDate" type="date"/>
                     
                 </ModalBody>
                 <ModalFooter>

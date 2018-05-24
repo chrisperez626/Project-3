@@ -30,7 +30,6 @@ class TaskGroup extends Component {
 
     newTask = () => {
         this.setState({ NewTask: !this.state.NewTask })
-        console.log(this)
 
     }
 
@@ -69,10 +68,12 @@ class TaskGroup extends Component {
                                                 <Task
                                                     key={task.id}
                                                     taskId={task.id}
-                                                    description={task.description} />
+                                                    description={task} />
 
                                             )
+                                            
                                         }
+                                        
                                     )}
                                 </div>
                             )
