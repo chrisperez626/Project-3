@@ -30,7 +30,6 @@ class TaskGroup extends Component {
 
     newTask = () => {
         this.setState({ NewTask: !this.state.NewTask })
-        console.log(this)
 
     }
 
@@ -68,10 +67,13 @@ class TaskGroup extends Component {
                                             return (
                                                 <Task
                                                     key={task.id}
-                                                    taskId={task.id} />
+                                                    taskId={task.id}
+                                                    description={task} />
 
                                             )
+                                            
                                         }
+                                        
                                     )}
                                 </div>
                             )
@@ -81,7 +83,7 @@ class TaskGroup extends Component {
                                     <form onSubmit={this.submitTask}>
                                         <textarea id='newTask' placeholder='Add new task here' onChange={this.handleInputChange}/>
                                         <br/>
-                                        <button type='submit'>Add Task</button><span>    </span>
+                                        <button type='submit'>Add Task</button>
                                         <button onClick={this.newTask}>Cancel</button>
                                     </form>
                                 </div>

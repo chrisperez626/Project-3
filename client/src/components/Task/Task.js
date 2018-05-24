@@ -51,11 +51,10 @@ class Task extends Component{
         welcomePage: this.props.welcomePage,
         comment: "",
         Users: [],
-        userId: ""
-
+        userId: "",
     }
     getComments = () => {
-        API.getTaskComments(this.props.id)
+        API.getTaskComments(this.props.taskId)
         .then(res=>{
             this.setState({comments: res.data})
         })
@@ -69,11 +68,10 @@ class Task extends Component{
     }
     
     componentDidMount=()=>{
-        console.log("TASKID: ", this.props.taskId);
         API.getTask(this.props.taskId)
         .then(res => {
-            console.log(res);
             this.setState({
+                description: res.data.description,
                 taskName: res.data.taskname,
                 status: res.data.status,
                 modal: this.props.show || false
@@ -103,27 +101,23 @@ class Task extends Component{
     }
 
     onSubmit = event =>{
-        API.updateTask(this.props.id, {taskname: this.state.taskName, status: this.state.status, description: this.state.description, UserId: this.state.userId})
+        API.updateTask(this.props.taskId, {taskname: this.state.taskName, status: this.state.status, dueDate: this.state.dueDate,description: this.state.description, UserId: "1", ProjectId: "1"})
     }
 
     onClickSubmit = event =>{
         event.preventDefault()
-        API.saveComment({comment: this.state.comment, TaskId: this.props.id})
+        API.saveComment({comment: this.state.comment, TaskId: this.props.taskId})
         .then(res=>this.getComments())
         .catch(err => console.log(err))
     }
 
-    // showModal = () => {
-    //     this.setState({show:true});
-    // }
 
     render(){
-        console.log("WELvbfghf", this.state.welcomePage)
         if(this.state.welcomePage){
             return(
                 <div key={this.state.taskId}>
                     <div className="card" style={styles.cardStyle} key={this.state.taskId}>
-                        <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
+                        <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task" />
                         <h6 className="card-block" style={styles.preProject} onClick={this.modalPopup}>
                             {this.state.taskName}
                         </h6>
@@ -131,70 +125,21 @@ class Task extends Component{
                     </div>
 
                     <TaskModal show={this.state.modal}
-                               onSubmit={this.onSubmit}
-                               taskName={this.state.taskName}
-                               dropdown={this.Dropdown}
-                               toggle={this.toggle}
-                               status={this.state.status}
-                               onSelect={this.onSelect}
-                               handleInputChange={this.handleInputChange}
-                               modalPopup={this.modalPopup} />
-                {/* </a>
-                <div>
-                    <Modal isOpen={this.state.modal}>
-                        <form onSubmit={this.onSubmit}>
-                            <ModalHeader>
-                                {this.props.content}
-                                <Button id="x-button"color="danger" onClick={this.modalPopup}>X</Button>
-                            </ModalHeader>
-                            <ModalBody>
-                                <h2>Update Status</h2>
-                                <Dropdown isOpen={this.state.Dropdown} toggle={this.toggle}>
-                                    <DropdownToggle caret>
-                                        {this.state.status}
-                                    </DropdownToggle>
-                                    <DropdownMenu>
-                                        <DropdownItem onClick={this.onSelect} value="To-Do">To-Do</DropdownItem>
-                                        <DropdownItem onClick={this.onSelect} value="Doing">Doing</DropdownItem>
-                                        <DropdownItem onClick={this.onSelect} value="Done">Done</DropdownItem>
-                                        <DropdownItem onClick={this.onSelect} value="Remove">Remove from Project</DropdownItem>
-                                    </DropdownMenu>
-                                </Dropdown>
-                                <br/>
-                                <h3 >Update Task Name</h3>
-                                <input name="taskName" onChange={this.handleInputChange} type="text" defaultValue={this.props.content}/>
-                                <br/>
-                                <h3>Description</h3>
-                                <div className="card text-center"><h5>{this.props.description}</h5></div>
-                                <textarea placeholder="Change description here" name="description" onChange={this.handleInputChange}/>
-                                <br/>
-                                <h4>Comments</h4>
-                                {this.state.comments.map(comment =>{
-                                    return(
-                                        <div className="card">{comment.comment}</div>
-                                    )
-                                })}
-                                <input name="comment" onChange={this.handleInputChange} type="text"/>
-                                <br/>
-                                <br/>
-                                <Button type="submit" onClick={this.onClickSubmit}>Submit</Button>
-                                <br/>
-                                <h3>Assign Task</h3>
-                                <select placeholder="mook" onChange={this.handleInputChange} name="userId" className="dropdown">
-                                    <option selected='selected'>Choose User</option>
-                                    {this.state.Users.map(user => {
-                                        return(
-                                            <option value={user.id}>{user.firstname}</option>
-                                        )
-                                    })}
-                                </select>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button type="submit">Submit</Button>
-                            </ModalFooter>
-                        </form>
-                    </Modal>
-                </div> */}
+                        onSubmit={this.onSubmit}
+                        taskName={this.state.taskName}
+                        dropdown={this.state.Dropdown}
+                        toggle={this.toggle}
+                        status={this.state.status}
+                        onSelect={this.onSelect}
+                        handleInputChange={this.handleInputChange}
+                        modalPopup={this.modalPopup}
+                        comments={this.state.comments}
+                        Users={this.state.Users}
+                        description={this.state.description}
+                        onClickSubmit={this.onClickSubmit} />
+
+
+
                 </div>
             );
         }
@@ -211,12 +156,16 @@ class Task extends Component{
                     <TaskModal show={this.state.modal}
                                onSubmit={this.onSubmit}
                                taskName={this.state.taskName}
-                               dropdown={this.Dropdown}
+                               dropdown={this.state.Dropdown}
                                toggle={this.toggle}
                                status={this.state.status}
                                onSelect={this.onSelect}
                                handleInputChange={this.handleInputChange}
-                               modalPopup={this.modalPopup} />
+                               modalPopup={this.modalPopup}
+                               comments={this.state.comments}
+                               Users={this.state.Users}
+                               description={this.state.description}
+                               onClickSubmit={this.onClickSubmit} />
                     </div>
                </div> 
             )
@@ -224,7 +173,7 @@ class Task extends Component{
     }
 }
 
-const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect, handleInputChange, modalPopup}) => {
+const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect, handleInputChange, modalPopup, comments, Users, description, onClickSubmit}) => {
     return (
         <Modal isOpen={show}>
             <form onSubmit={onSubmit}>
@@ -250,12 +199,38 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     <input name="taskName" onChange={handleInputChange} type="text" defaultValue={taskName}/>
                     <br/>
                     <h3>Description</h3>
+                    <div className='card text-center'><strong>{description}</strong></div>
                     <textarea name="description" onChange={handleInputChange}/>
                     <br/>
                     <h4>Comments</h4>
-                    <input type="text"/>
-                    <Button>Submit</Button>
-                    {}
+
+                    {comments.map(comment =>{
+                        return (
+                            <div className="card">{comment.comment}</div>
+                        )
+                        
+                    })}
+                    <input name="comment" onChange={handleInputChange} type="text" />
+                    <br />
+                    <br />
+                    <Button type="submit" onClick={onClickSubmit}>Submit</Button>
+                    <br />
+                    <br />
+                    <h3>Assign Task</h3>
+                    <select placeholder="mook" onChange={this.handleInputChange} name="userId" className="dropdown">
+                        <option selected='selected'>Choose User</option>
+                        {Users.map(user => {
+                            return (
+                                <option value={user.id}>{user.firstname}</option>
+                            )
+                        })}
+                    </select>
+                    <br/>
+                    <br />
+                    <div>Due Date:</div>
+                    <h3>Due Date</h3>
+                    <input onChange={handleInputChange} name="dueDate" type="date"/>
+                    
                 </ModalBody>
                 <ModalFooter>
                     <Button type="submit">Submit</Button>
