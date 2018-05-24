@@ -53,10 +53,6 @@ class Task extends Component{
         Users: [],
         userId: "",
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 108a157630ee21458e65cf3338684c4be6e220c8
     getComments = () => {
         API.getTaskComments(this.props.taskId)
         .then(res=>{

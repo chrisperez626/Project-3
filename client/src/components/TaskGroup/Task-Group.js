@@ -13,44 +13,6 @@ class TaskGroup extends Component {
         taskName: ""
     }
 
-<<<<<<< HEAD
-    loadTasks = () =>{
-        
-        API.getProjectTask(this.props.projectId)
-        .then(res => {
-            this.setState({ divCount: res.data})
-        }).catch(err => {
-            console.log(err)
-        })
-    }
-
-    componentDidMount = () => {
-        this.loadTasks()
-        
-    }
-
-    newTask = () => {
-        this.setState({ NewTask: !this.state.NewTask })
-
-    }
-
-    submitTask = event => {
-        // event.preventDefault()
-        this.setState({ NewTask: !this.state.NewTask })
-        API.saveTask({taskname: this.state.taskName, status: this.props.header, UserId: this.props.user.id, ProjectId: this.props.projectId})
-        .then(data=>{
-            this.loadTasks()
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    }
-
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({ taskName: value });
-    }
-=======
     const formatDate = (date) => {
         if (date) {
 
@@ -89,7 +51,6 @@ class TaskGroup extends Component {
                                                 newDate={formatDate(task.dueDate)}
                                                 // tasks={this.state.divCount}
                                                 />
->>>>>>> 108a157630ee21458e65cf3338684c4be6e220c8
 
     render() {
         return (
