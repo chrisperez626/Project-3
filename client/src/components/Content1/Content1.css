@@ -486,3 +486,8 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 {    margin-left: -21px;
     width: 300px; 
 }
+
+.taskhdr
+{
+    color:white;
+}

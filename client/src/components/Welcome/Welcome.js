@@ -151,7 +151,7 @@ class Welcome extends Component {
         }
         return (
             <div className="container" style={styles.body}>
-                <h2>Tasks</h2>
+                <h2 className="taskhdr">Tasks</h2>
                 {this.state.tasks.length ? (
                     <div style={styles.grid}>
                         {this.state.tasks.map(task => (
