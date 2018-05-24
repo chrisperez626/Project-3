@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
-import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from "mdbreact";
 import Task from "../Task";
 
 const styles = {
@@ -11,6 +11,7 @@ const styles = {
         gridGap: "10px",
         height: "50px",
         color:"black"
+        
     },
     projectContent:{
         paddingTop:"200px"
@@ -47,6 +48,13 @@ const styles = {
     },
     create:{
         paddingTop:"215px"
+    },
+    modalHeader:{
+    backgroundColor: "indianred",
+    color: "white",
+    fontSize:"8px",
+    fontWeight:"bold",
+    height:"40px"
     }
 
 
@@ -165,9 +173,12 @@ class Welcome extends Component {
         }
         return (
             <div className="container text-left" style={styles.body}>
-                <h3><strong>Tasks</strong></h3>
+                <h2><strong>Tasks</strong></h2>
+                <div className="row">
+                <div className="col-12">
                 {this.state.tasks.length ? (
-                    <div style={styles.grid}>
+                    // <div style={styles.grid}>
+                        <div>
                         {this.state.tasks.map(task => (
                             <Task  key ={task.id} welcomePage={true} taskId={task.id} projectName={task.Project.projectname} />
                         )
@@ -175,7 +186,8 @@ class Welcome extends Component {
                     </div>
                          ) : (
                             <div style={styles.grid}>
-                                <div className="card" style={styles.cardStyle}>
+                
+                                <div className="card taskcard" style={styles.cardStyle}>
                                 <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
                                 <h6 className="card-block" style={styles.preProject} >
                                 Create Projects and Tasks
@@ -183,17 +195,43 @@ class Welcome extends Component {
                                 </div>
                             </div>
                             )} 
+                        </div>   
+                        </div>
                     <br/>
-                <div><label style={styles.projectHeading}>Projects</label> <i className="fas fa-plus" style={styles.create} onClick={this.createToggle}>
-                                </i></div>
+                {/* <div><label style={styles.projectHeading}>Projects</label> <i className="fas fa-plus" style={styles.create} onClick={this.createToggle}>
+                                </i></div> */}
+                           <div className="container">
+                                <div className="row btnrow">
+                                 <div className="col-12">
+                               <button onClick={this.createToggle} className="express-btn btn btn-primary btn-xl rounded-pill mt-5 loginbtn newpbtn" >Create New Project</button>
+                                        </div></div>
+
                     {this.state.projects.map(project =>(
                         <div key ={project.id}>
+                            {/* <div className="row">
+                                 <div className="col-12">
                             <label style={styles.projectLbl} onClick={()=>this.handleProject(project.id)}>{project.projectname}</label> 
                                 <i className="fas fa-edit" data-id={project.id} style={styles.edit} onClick={()=>this.updateToggle(project.id,project.projectname)}>
-                                </i>                        
+                                </i> 
+                                </div></div>     */}
+
+                                    <div className="row">
+                                 <div className="col-2 pname">
+                                    <label style={styles.projectLbl} >{project.projectname}</label>
+                                 </div>
+                                 <div className="col-5">
+                                    <button  onClick={()=>this.handleProject(project.id)} className="express-btn btn btn-primary btn-xl rounded-pill mt-5 loginbtn newtaskbtn" >Add New Tasks</button>
+                                 </div>
+                                 <div className="col-5">
+                                    <button  onClick={()=>this.updateToggle(project.id,project.projectname)} className="express-btn btn btn-primary btn-xl rounded-pill mt-5 loginbtn updatepbtn" >Update Project Name</button>
+                                 </div>
+                                 </div>
+
+                                
+                                                
                         <Modal isOpen={this.state.updateModal} >
                             <form onSubmit={this.handleFormUpdate} data-id={this.state.projectId} >
-                                <ModalHeader>Update Project Name</ModalHeader>
+                                <ModalHeader style={styles.modalHeader}>Update Project Name</ModalHeader>
                                 <ModalBody>
                                     <div className="row">
                                         <div className="form-group col-md-6">
@@ -218,7 +256,7 @@ class Welcome extends Component {
                 <div>
                     <Modal isOpen={this.state.createModal}>
                         <form onSubmit={this.handleFormSubmit}>
-                            <ModalHeader>Project Name</ModalHeader>
+                            <ModalHeader style={styles.modalHeader}>Project Name</ModalHeader>
                             <ModalBody>
                                 <div className="row">
                                     <div className="form-group col-md-6">
@@ -233,7 +271,7 @@ class Welcome extends Component {
                         </form>
                     </Modal>
                 </div>
-                
+                </div>
             </div>
             
         );
