@@ -61,7 +61,6 @@ class App extends Component {
  
 
   render() {
-    console.log("in app js", this.state.user)
     return (
       <Router>
         <div>

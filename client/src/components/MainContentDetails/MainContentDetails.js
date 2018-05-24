@@ -39,7 +39,7 @@ const MainContentDetails = () => {
 
         <div style={styles.grid}>
           <div className="col-4 imgcol">
-            <Card>
+            <Card className="infocards">
               <CardImage className="contentimg" src={require("../../img/whiteboard.jpg")}  /> 
                 <CardBody>
                   <CardTitle>White Board</CardTitle>
@@ -48,7 +48,7 @@ const MainContentDetails = () => {
             </Card>
           </div>
           <div className="col-4 imgcol">
-            <Card>
+          <Card className="infocards">
               <CardImage className="contentimg" src={require("../../img/logos.jpg")}  /> 
                 <CardBody>
                   <CardTitle>Manage You Project</CardTitle>
@@ -58,7 +58,7 @@ const MainContentDetails = () => {
           </div>
 
           <div className="col-4 imgcol">
-            <Card>
+          <Card className="infocards">
               <CardImage className="contentimg" src={require("../../img/speech.jpg")}  /> 
                 <CardBody>
                   <CardTitle>Presentation</CardTitle>

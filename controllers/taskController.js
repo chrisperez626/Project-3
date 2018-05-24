@@ -18,10 +18,14 @@ module.exports = {
     findbyUserId:(req,res) => {
         db.Task.findAll({
             where:{
-                UserId:req.params.id
+                UserId:req.params.id,
+                dueDate: {
+                    gte: new Date()
+                }
             },
             include:[db.Project]
         }).then(dbModel => {
+            console.log(dbModel);
             res.json(dbModel)})
         .catch(err => console.log(err));
     },

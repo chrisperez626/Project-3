@@ -36,7 +36,7 @@ class ProjectPage extends Component {
             <TaskGroup
               projectId = {this.props.projectId}
               user = {this.props.user}
-              header='To-Do'
+              header='To Do'
               id='1'/>              
           </Col>
           <Col>
