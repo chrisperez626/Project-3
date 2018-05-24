@@ -58,7 +58,7 @@ class SignupForm extends Component {
           <br></br>
           <label>Password: </label>
           <input name="password" type="password" className="form-control" placeholder="password" value={this.state.password} onChange={this.handleInputChange}></input>
-          <button onClick={this.handleSignUp} className="express-btn btn btn-primary btn-xl rounded-pill mt-5">Login</button>
+          <button onClick={this.handleSignUp} className="express-btn btn btn-primary btn-xl rounded-pill mt-5">Sign Up</button>
         </div>
       </form>
 
