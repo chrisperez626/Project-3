@@ -1,3 +1,9 @@
 .welcome{
     color:black;
 }
+
+.modalHeader
+{
+    background-color: indianred;
+    color: white;
+}
