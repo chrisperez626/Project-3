@@ -520,6 +520,7 @@ width: 400px;
 .taskcard{
   background-color: indianred;
     color: white;
+    margin-right: 40px;
 }
 
 .pname
@@ -537,7 +538,7 @@ width: 400px;
 
 .newpbtn
 {
-  margin-left: 205px;
+  margin-left: 325px;
   background-color: black;
   color:  #fdcc52;
   align-content: center;
@@ -545,5 +546,5 @@ width: 400px;
 
 .btnrow
 {
-  padding-top: 200px;
+  padding-top: 5px;
 }

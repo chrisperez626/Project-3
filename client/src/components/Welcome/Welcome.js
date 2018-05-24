@@ -170,7 +170,8 @@ class Welcome extends Component {
                 <div className="row">
                 <div className="col-12">
                 {this.state.tasks.length ? (
-                    <div style={styles.grid}>
+                    // <div style={styles.grid}>
+                        <div>
                         {this.state.tasks.map(task => (
                             <Task  key ={task.id} welcomePage={true} taskId={task.id} projectName={task.Project.projectname} />
                         )
@@ -178,6 +179,7 @@ class Welcome extends Component {
                     </div>
                          ) : (
                             <div style={styles.grid}>
+                
                                 <div className="card taskcard" style={styles.cardStyle}>
                                 <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
                                 <h6 className="card-block" style={styles.preProject} >
