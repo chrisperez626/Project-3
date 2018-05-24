@@ -164,13 +164,8 @@ class Welcome extends Component {
             return <Redirect to={this.state.redirectTo} />
         }
         return (
-<<<<<<< HEAD
-            <div className="container" style={styles.body}>
-                <h2 className="taskhdr">Tasks</h2>
-=======
             <div className="container text-left" style={styles.body}>
                 <h3><strong>Tasks</strong></h3>
->>>>>>> 837081a94eadfca0f50cb565f4975cf02f65fb46
                 {this.state.tasks.length ? (
                     <div style={styles.grid}>
                         {this.state.tasks.map(task => (
