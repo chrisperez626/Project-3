@@ -1,21 +1,34 @@
 import React, { Component } from "react";
-import {Route} from 'react-router-dom';
 import TaskGroup from '../TaskGroup';
-import Task from "../Task";
 import {Wrapper, Col, Row} from "../BootstrapGrid";
 import { Redirect } from "react-router-dom";
+import API from "../../utils/API";
 
 
 class ProjectPage extends Component {
   
+  state ={
+    projectname:""
+  }
+
+  componentDidMount(){
+    this.loadname();
+  }
+
+  loadname =() =>{
+    API.getProject(this.props.projectId).then(res=>{
+      this.setState({projectname:res.data.projectname});
+    }).catch(err=>console.log(err));
+  }
 
   render() {
-    console.log(this.props.projectId);
     if(!this.props.loggedIn){
       return <Redirect to="/" />
     }
+    
     return (
       <div>
+        <h4> <strong>Project:{this.state.projectname}</strong></h4>
         <Wrapper>
           <Row>
           <Col>
@@ -27,11 +40,15 @@ class ProjectPage extends Component {
           </Col>
           <Col>
             <TaskGroup 
+              projectId = {this.props.projectId}
+              user = {this.props.user}
               header='Doing'
               id="2"/>
           </Col>
           <Col>
             <TaskGroup 
+              projectId = {this.props.projectId}
+              user = {this.props.user}
               header='Done'
               id="3"/>
           </Col>

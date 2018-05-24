@@ -45,8 +45,8 @@ class SignupForm extends Component {
       <Wrapper>
 
 
-        <form class="create-form">
-        <div class="form-group">
+        <form className="create-form">
+        <div className="form-group">
           <label>First Name: </label>
           <input name="firstname" type="text" className="form-control" placeholder="first name" value={this.state.firstname} onChange={this.handleInputChange}></input>
           <br></br>

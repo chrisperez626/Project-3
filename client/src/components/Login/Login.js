@@ -18,6 +18,7 @@ class Login extends Component{
   };
 
   handleLogin = event => {
+    event.preventDefault();
     API.login({ email: this.state.email, password: this.state.password})
     .then((res) => {
         console.log("RES", res);
@@ -37,7 +38,7 @@ class Login extends Component{
 
 
 
-<form class="create-form">
+<form className="create-form">
         <div className="form-group">
           <label>Email: </label>
           <input name="email" type="text" className="form-control" placeholder="email" value={this.state.email} onChange={this.handleInputChange}></input>
