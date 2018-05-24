@@ -26,6 +26,18 @@ module.exports = {
         .catch(err => console.log(err));
     },
 
+    findbyProjectId:(req,res) => {
+        console.log("inside findbyProjectId: ", req.params.id);
+        db.Task.findAll({
+            where:{
+                ProjectId:req.params.id
+            },
+            include:[db.Project]
+        }).then(dbModel => {
+            res.json(dbModel)})
+        .catch(err => console.log(err));
+    },
+
     create:(req, res) => {
         db.Task.create(req.body)
         .then(dbModel => res.json(dbModel))

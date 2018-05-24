@@ -90,7 +90,8 @@ class App extends Component {
 
     <Route exact path="/whiteboard" render={() => <Main
                                                 mastHeadContent={<WhiteboardMastDetails />} 
-                                                mainContent={<Whiteboard loggedIn={this.state.loggedIn} logout={this.handleLogout} />}/>} />
+
+                                                mainContent={<Whiteboard loggedIn={this.state.loggedIn} logout={this.handleLogout}/>}/>} />
 
     <Route exact path="/profile" render={() => <Main
                                                 mastHeadContent={<MainMastDetails />} 

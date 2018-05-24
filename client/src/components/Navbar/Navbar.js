@@ -37,7 +37,7 @@ const Navbar = ({loggedIn, logout, user}) => {
                 </li>,
                 <li className="nav-item" key="whiteboard">
                   {/* <a className="nav-link js-scroll-trigger" href="#features">Manage Project</a> */}
-                  <Link className="nav-utm nav-link" to="/Whiteboard">Whiteboard</Link>
+                  <Link className="nav-utm nav-link" to="/whiteboard">Whiteboard</Link>
                 </li>,
 
                 <li className="nav-item" key="user">
