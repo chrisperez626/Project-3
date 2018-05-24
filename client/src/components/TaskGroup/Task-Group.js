@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Route} from 'react-router-dom';
 import './Task-Group.css';
 import API from '../../utils/API';
 import Task from '../Task';
@@ -15,9 +14,10 @@ class TaskGroup extends Component {
     }
 
     loadTasks = () =>{
-        API.getAllTask()
+        
+        API.getProjectTask(this.props.projectId)
         .then(res => {
-            this.setState({ divCount: res.data })
+            this.setState({ divCount: res.data})
         }).catch(err => {
             console.log(err)
         })
@@ -69,11 +69,10 @@ class TaskGroup extends Component {
                                                 <Task
                                                     key={task.id}
                                                     taskId={task.id} />
-                                                    // id={task.id}
-                                                    // description={task.description} />
 
                                             )
-                                    })}
+                                        }
+                                    )}
                                 </div>
                             )
                             :

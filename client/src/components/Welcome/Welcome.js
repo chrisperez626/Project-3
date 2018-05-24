@@ -5,9 +5,6 @@ import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Task from "../Task";
 
 const styles = {
-    body:{
-        // paddingTop:"100px"
-    },
     grid: {
         display: "grid",
         gridTemplateColumns: "repeat(3, 1fr)",
@@ -19,7 +16,6 @@ const styles = {
         paddingTop:"200px"
     },
     project:{
-        textAlign:"center",
         fontSize:"16px"
     },
     preProject: {
@@ -36,8 +32,23 @@ const styles = {
         width:"250px"
     },
     projectLbl:{
-        paddingRight:"10px"
+        paddingRight:"10px",
+       clear:"both"
+    },
+    edit:{
+        paddingTop:"16px",
+    },
+    projectHeading:{
+        paddingTop:"200px",
+        paddingRight:"10px",
+        clear:"both",
+        fontSize:"1.75rem",
+        fontWeight:"bold"
+    },
+    create:{
+        paddingTop:"215px"
     }
+
 
 }
 
@@ -97,7 +108,8 @@ class Welcome extends Component {
             };
             API.saveProject(newProject).then(()=>{
                 console.log("Project Created");
-                this.setState({projectname:""});
+                this.setState({projectname:"",
+                createModal: !this.state.createModal});
                 this.loadProjects();
             }).catch(err=>console.log(err));
         }
@@ -114,9 +126,11 @@ class Welcome extends Component {
             };
             API.updateProject(id,updatedProject).then(()=>{
                 console.log("Project Updated");
-                this.setState({projectname:""});
+                this.setState({projectname:"",
+                updateModal: !this.state.updateModal
+            });
                 this.loadProjects();
-            }).catch(err=>console.log(err));
+           }).catch(err=>console.log(err));
         }
     }
 
@@ -150,22 +164,12 @@ class Welcome extends Component {
             return <Redirect to={this.state.redirectTo} />
         }
         return (
-            <div className="container" style={styles.body}>
-                <h2>Tasks</h2>
+            <div className="container text-left" style={styles.body}>
+                <h3><strong>Tasks</strong></h3>
                 {this.state.tasks.length ? (
                     <div style={styles.grid}>
                         {this.state.tasks.map(task => (
-                            <Task welcomePage={true} taskId={task.id} projectName={task.Project.projectname} />
-                            // <div key={task.id}>
-                            // <div className="card" style={styles.cardStyle} key={task.id}>
-                            //     <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
-                            //     <h6 className="card-block" style={styles.preProject} onClick={()=>this.handleProject(task.Project.id,task.id)}>
-                            //         {task.taskname}
-                            //     </h6>
-                            //     <p style={styles.project}>Project: {task.Project.projectname}</p>
-                            // </div>
-                            // <div></div>
-                            // </div>
+                            <Task  key ={task.id} welcomePage={true} taskId={task.id} projectName={task.Project.projectname} />
                         )
                         )}
                     </div>
@@ -173,30 +177,27 @@ class Welcome extends Component {
                             <div style={styles.grid}>
                                 <div className="card" style={styles.cardStyle}>
                                 <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
-                                <h4 className="card-block" style={styles.preProject} >
-                                </h4>
+                                <h6 className="card-block" style={styles.preProject} >
+                                Create Projects and Tasks
+                                </h6>
                                 </div>
                             </div>
                             )} 
                     <br/>
-                <div style={styles.projectContent}><h4>Projects</h4></div>
+                <div><label style={styles.projectHeading}>Projects</label> <i className="fas fa-plus" style={styles.create} onClick={this.createToggle}>
+                                </i></div>
                     {this.state.projects.map(project =>(
-                        <div  key ={project.id}>
-                        <div className="col-12">
+                        <div key ={project.id}>
                             <label style={styles.projectLbl} onClick={()=>this.handleProject(project.id)}>{project.projectname}</label> 
-                            {/* <span data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}> */}
-                                <i className="fas fa-edit" data-id={project.id} onClick={()=>this.updateToggle(project.id,project.projectname)}>
-                                </i>
-                            {/* </span>     */}
-                        </div>
-                        <div>
+                                <i className="fas fa-edit" data-id={project.id} style={styles.edit} onClick={()=>this.updateToggle(project.id,project.projectname)}>
+                                </i>                        
                         <Modal isOpen={this.state.updateModal} >
                             <form onSubmit={this.handleFormUpdate} data-id={this.state.projectId} >
                                 <ModalHeader>Update Project Name</ModalHeader>
                                 <ModalBody>
                                     <div className="row">
                                         <div className="form-group col-md-6">
-                                            <input type="text" name="projectname" value={this.state.projectname} onChange={this.handleInputChange} placeholder={this.state.projectname} className="form-control" />
+                                            <input type="text" name="projectname" value={this.state.projectname || ''} onChange={this.handleInputChange} placeholder={this.state.projectname} className="form-control" />
                                         </div>
                                     </div>
                                 </ModalBody>
@@ -206,16 +207,12 @@ class Welcome extends Component {
                                 </ModalFooter>
                             </form>
                         </Modal>
-                    </div>
-                    </div>
-                    ))}
-                {/* <div style={styles.grid}>
-                    <div className="card board-card" style={styles.cardWidth} onClick={this.toggle}> */}
-                        <h4 className="card-block" onClick={this.createToggle}>
+                        </div>
+                        ))}
+                    
+                        {/* <h4 style={styles.projectLbl} onClick={this.createToggle}>
                             + Create New Project
-                    </h4>
-                    {/* </div>
-                </div> */}
+                    </h4> */}
                 
                 <br />
                 <div>

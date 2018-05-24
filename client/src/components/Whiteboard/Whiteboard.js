@@ -208,7 +208,6 @@ export default class extends Component {
       return <Redirect to="/" />
     }
     return (
-
       <div className="row">
         <div className="col-11 canvascol">
           <div className={classNames.tools}>
@@ -242,14 +241,14 @@ export default class extends Component {
       </div>
       
           <div className="col-1 btnscol">  
-          <button className="wbbtn" class="wbbtn express-btn btn btn-primary btn-xl rounded-pill mt-5"
+          <button className="wbbtn express-btn btn btn-primary btn-xl rounded-pill mt-5"
             onClick={() => {
               this.clear();
             }}
           >
             Clear
           </button>
-          <button className="wbbtn" class=" wbbtn express-btn btn btn-primary btn-xl rounded-pill mt-5"
+          <button className="wbbtn express-btn btn btn-primary btn-xl rounded-pill mt-5"
             onClick={() => {
               this.undo();
             }}

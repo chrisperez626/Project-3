@@ -18,6 +18,7 @@ class Login extends Component{
   };
 
   handleLogin = event => {
+    event.preventDefault();
     API.login({ email: this.state.email, password: this.state.password})
     .then((res) => {
         console.log("RES", res);
