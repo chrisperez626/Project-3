@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import TaskGroup from '../TaskGroup';
 import {Wrapper, Col, Row} from "../BootstrapGrid";
-import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom"
 import API from "../../utils/API";
+
 
 
 class ProjectPage extends Component {
