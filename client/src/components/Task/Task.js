@@ -127,10 +127,10 @@ class Task extends Component{
     render(){
         if(this.state.welcomePage){
             return(
-                <div key={this.state.taskId}>
-                    <div className="card taskcard" style={styles.cardStyle} key={this.state.taskId}>
+                <div key={this.state.taskId} >
+                    <div className="card taskcard" style={styles.cardStyle} key={this.state.taskId} onClick={this.modalPopup}>
                         <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task" />
-                        <h6 className="card-block" style={styles.preProject} onClick={this.modalPopup}>
+                        <h6 className="card-block" style={styles.preProject}>
                             {this.state.taskName}
                         </h6>
                         <p style={styles.project}>Project: {this.props.projectName}</p>
