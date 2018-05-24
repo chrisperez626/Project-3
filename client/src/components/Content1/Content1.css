@@ -448,7 +448,7 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .btn-primary:focus,
 .btn-primary:hover {
   background-color: black !important;
-  border-color: #cf353f !important;
+  border-color: white !important;
 }
 
 .btn-primary:focus {
@@ -456,15 +456,15 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 }
 
 .btn-secondary {
-  background-color: #cf353f;
-  border-color: #cf353f;
+  background-color: indianred;
+  border-color: white;
 }
 
 .btn-secondary:active,
 .btn-secondary:focus,
 .btn-secondary:hover {
-  background-color: #cf353f !important;
-  border-color: black !important;
+  background-color: indianred;
+  border-color: white;
 }
 
 .btn-secondary:focus {
@@ -485,4 +485,13 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .card
 {    margin-left: -21px;
     width: 300px; 
+}
+
+.taskhdr
+{
+    color:white;
+}
+
+.infocards{
+width: 400px;
 }
