@@ -53,8 +53,15 @@ class Task extends Component{
         comment: "",
         Users: [],
         userId: this.props.userId,
-        loadTasks: this.props.loadTasks
+        loadTasks: this.props.loadTasks,
+        dueDate: "2018-05-31"
     }
+    formatDueDate = () => {
+        const newDate = this.state.dueDate.split(/\s*-\s*/)
+        const dateFormat = newDate[1] + "-" + newDate[2];
+        console.log(dateFormat)
+    }
+
     getComments = () => {
         API.getTaskComments(this.props.taskId)
         .then(res=>{
@@ -154,12 +161,12 @@ class Task extends Component{
             );
         }
         else{
-            console.log(this.state.welcomePage)
             return(
                 <div>
                     <a onClick={this.modalPopup}>
                         <div id={this.props.id} className="card">
                             <strong>{this.state.taskName}</strong>
+                            <p>{this.props.newDate}</p>
                         </div>
                     </a>
                 

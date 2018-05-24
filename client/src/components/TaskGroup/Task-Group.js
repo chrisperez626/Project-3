@@ -23,6 +23,17 @@ const TaskGroup = props => {
                                     <button onClick={() => newTask()}>Add new task +</button>
                                 </div>
                                 {props.tasks.slice(0).reverse().map(task => {
+                                    if(task.dueDate){
+                                        const dateArray = task.dueDate.split(/\s*-\s*/);
+                                        console.log(dateArray)
+                                        const day = dateArray[2].split(/\s*T\s*/);
+                                        console.log(day)
+                                        const newDate = dateArray[1] + "-" + day[0];
+                                        console.log(newDate)
+                                        // return newDate
+                                    }
+                                    
+
                                     if (props.header === task.status)
 
                                         return (
@@ -33,6 +44,7 @@ const TaskGroup = props => {
                                                 projectId={props.projectId}
                                                 userId={props.user.id}
                                                 loadTasks={props.loadTasks}
+                                                newDate={newDate}
                                                 // tasks={this.state.divCount}
                                                 />
 
