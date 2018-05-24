@@ -42,7 +42,11 @@ export default {
     return axios.get("/api/tasks");
   },
   getUserTask: function(id){
-    return axios.get("api/usertasks/"+id);
+    return axios.get("/api/usertasks/"+id);
+  },
+  getProjectTask: function(id){
+    console.log("inside getProjectTask:", id);
+    return axios.get("/api/projecttasks/"+id)
   },
   saveTask: function(taskData){
     return axios.post("/api/tasks",taskData);
