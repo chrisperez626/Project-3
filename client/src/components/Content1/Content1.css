@@ -495,3 +495,10 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .infocards{
 width: 400px;
 }
+
+.card-title, .card-block
+{
+  font-weight: bold;
+  text-align: center
+
+}

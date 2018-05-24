@@ -12,6 +12,8 @@ const MainMastDetails = () => {
         <div className="row">
           <div className="col-8 txtcol">
               <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   THE PROJECT MANAGER MAKES IT EASY...."</h1>
+              <br></br>
+              <br></br>
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGNUP</Link>
               <a>OR</a>
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/login">LOGIN</Link>
