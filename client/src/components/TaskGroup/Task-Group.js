@@ -11,6 +11,16 @@ const TaskGroup = props => {
         props.newTask(props.id)
     }
 
+    const formatDate = (date) => {
+        if (date) {
+
+            const dateArray = date.split(/\s*-\s*/);
+            const day = dateArray[2].split(/\s*T\s*/);
+            const newDate = dateArray[1] + "/" + day[0];
+            return newDate
+        }
+    }
+
     return (
         <div>
             <div id={props.id} className='card mycard'>
@@ -23,18 +33,10 @@ const TaskGroup = props => {
                                     <button onClick={() => newTask()}>Add new task +</button>
                                 </div>
                                 {props.tasks.slice(0).reverse().map(task => {
-                                    if(task.dueDate){
-                                        const dateArray = task.dueDate.split(/\s*-\s*/);
-                                        console.log(dateArray)
-                                        const day = dateArray[2].split(/\s*T\s*/);
-                                        console.log(day)
-                                        const newDate = dateArray[1] + "-" + day[0];
-                                        console.log(newDate)
-                                        // return newDate
-                                    }
                                     
-
                                     if (props.header === task.status)
+
+                                        
 
                                         return (
                                             <Task
@@ -44,7 +46,7 @@ const TaskGroup = props => {
                                                 projectId={props.projectId}
                                                 userId={props.user.id}
                                                 loadTasks={props.loadTasks}
-                                                newDate={newDate}
+                                                newDate={formatDate(task.dueDate)}
                                                 // tasks={this.state.divCount}
                                                 />
 
