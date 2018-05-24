@@ -435,9 +435,10 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 
 .mastimg
 {
-  min-width: 170%;
+  min-width: 150%;
   margin-left: 0px;
-  margin-top: 20%;
+  margin-top: 30%;
+  border-radius: 8px;
 }
 .header-content{
   margin-top: 10%;

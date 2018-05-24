@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
+// import {Redirect} from 'react-router-dom';
 import './Task.css';
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from "reactstrap";
 import API from '../../utils/API'
@@ -216,7 +216,7 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     <input name="taskName" onChange={handleInputChange} type="text" defaultValue={taskName}/>
                     <br/>
                     <h3>Description</h3>
-                    <div className='card text-center'><strong>{description}</strong></div>
+                    <div className='card text-center descbox'><strong>{description}</strong></div>
                     <textarea name="description" onChange={handleInputChange}/>
                     <br/>
                     <h4>Comments</h4>

@@ -26,7 +26,7 @@ const MainContentDetails = () => {
         <div className="row">
           <div className="col-12 hdrcol">
           <div className="contentheader">
-              <h1>The Bootcamp Project Manager helps you manager all phases of your coding project from your "idea" to your final presentation.</h1>
+              <h1><strong>The Synergy - Project Manager helps you manager all phases of your coding project from your "idea" to your final presentation.</strong></h1>
               <br></br>
               <br></br>
               <br></br>

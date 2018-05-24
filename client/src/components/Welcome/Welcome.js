@@ -173,7 +173,7 @@ class Welcome extends Component {
         }
         return (
             <div className="container text-left" style={styles.body}>
-                <h2><strong>Tasks</strong></h2>
+                <h2 className="taskshdr"><strong>Tasks</strong></h2>
                 <div className="row">
                 <div className="col-12">
                 {this.state.tasks.length ? (

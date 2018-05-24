@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Task-Group.css';
-import API from '../../utils/API';
+// import API from '../../utils/API';
 import Task from '../Task';
 
 
