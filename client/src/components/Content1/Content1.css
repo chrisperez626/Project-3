@@ -495,3 +495,56 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 .infocards{
 width: 400px;
 }
+
+.card-title, .card-block
+{
+  font-weight: bold;
+  text-align: center
+
+}
+
+.modal-header
+{
+    background-color: indianred;
+    color: white;
+
+}
+
+.modal-title
+{
+    font-size: large;
+    font-weight: bold;
+
+}
+
+.taskcard{
+  background-color: indianred;
+    color: white;
+    margin-right: 40px;
+}
+
+.pname
+{
+  float: left;
+  margin-top: 60px;
+  font-weight: bold;
+  font-size: large;
+}
+
+.updatepbtn
+{
+  margin-left: -125px;
+}
+
+.newpbtn
+{
+  margin-left: 325px;
+  background-color: black;
+  color:  #fdcc52;
+  align-content: center;
+}
+
+.btnrow
+{
+  padding-top: 5px;
+}

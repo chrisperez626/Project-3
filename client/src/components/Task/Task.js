@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Redirect} from 'react-router-dom';
 import './Task.css';
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from "reactstrap";
 import API from '../../utils/API'
@@ -51,7 +52,8 @@ class Task extends Component{
         welcomePage: this.props.welcomePage,
         comment: "",
         Users: [],
-        userId: "",
+        userId: this.props.userId,
+        loadTasks: this.props.loadTasks
     }
     getComments = () => {
         API.getTaskComments(this.props.taskId)
@@ -101,10 +103,14 @@ class Task extends Component{
     }
 
     onSubmit = event =>{
-        API.updateTask(this.props.taskId, {taskname: this.state.taskName, status: this.state.status, dueDate: this.state.dueDate,description: this.state.description, UserId: "1", ProjectId: "1"})
-        .then(res=>{
-            // this.loadTasks();
-        }).catch(err=>{console.log(err)});
+        event.preventDefault()
+        API.updateTask(this.props.taskId, {taskname: this.state.taskName, status: this.state.status, dueDate: this.state.dueDate,description: this.state.description, UserId: this.state.userId, ProjectId: this.props.projectId})
+        .then(()=> {
+            this.props.loadTasks()
+        })
+        .catch(err => console.log(err))
+        this.setState({modal: !this.state.modal})
+        // this.props.loadTasks()
     }
 
     onClickSubmit = event =>{
@@ -112,6 +118,7 @@ class Task extends Component{
         API.saveComment({comment: this.state.comment, TaskId: this.props.taskId})
         .then(res=>this.getComments())
         .catch(err => console.log(err))
+        this.setState({welcomePage: false})
     }
 
 
@@ -119,7 +126,7 @@ class Task extends Component{
         if(this.state.welcomePage){
             return(
                 <div key={this.state.taskId}>
-                    <div className="card" style={styles.cardStyle} key={this.state.taskId}>
+                    <div className="card taskcard" style={styles.cardStyle} key={this.state.taskId}>
                         <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task" />
                         <h6 className="card-block" style={styles.preProject} onClick={this.modalPopup}>
                             {this.state.taskName}
@@ -147,6 +154,7 @@ class Task extends Component{
             );
         }
         else{
+            console.log(this.state.welcomePage)
             return(
                 <div>
                     <a onClick={this.modalPopup}>
@@ -220,7 +228,7 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     <br />
                     <br />
                     <h3>Assign Task</h3>
-                    <select placeholder="mook" onChange={this.handleInputChange} name="userId" className="dropdown">
+                    <select  onChange={handleInputChange} name="userId" className="dropdown">
                         <option selected='selected'>Choose User</option>
                         {Users.map(user => {
                             return (

@@ -42,8 +42,8 @@ const MainContentDetails = () => {
             <Card className="infocards">
               <CardImage className="contentimg" src={require("../../img/whiteboard.jpg")}  /> 
                 <CardBody>
-                  <CardTitle>White Board</CardTitle>
-                  <CardText>Use the white board to develop your team's ideas and design your project</CardText>
+                  <CardTitle>Whiteboard</CardTitle>
+                  <CardText>Use the whiteboard to develop your team's ideas and design your project</CardText>
                 </CardBody>
             </Card>
           </div>
