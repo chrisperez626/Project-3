@@ -13,6 +13,7 @@ class TaskGroup extends Component {
         taskName: ""
     }
 
+<<<<<<< HEAD
     loadTasks = () =>{
         
         API.getProjectTask(this.props.projectId)
@@ -49,6 +50,46 @@ class TaskGroup extends Component {
         const { name, value } = event.target;
         this.setState({ taskName: value });
     }
+=======
+    const formatDate = (date) => {
+        if (date) {
+
+            const dateArray = date.split(/\s*-\s*/);
+            const day = dateArray[2].split(/\s*T\s*/);
+            const newDate = dateArray[1] + "/" + day[0];
+            return newDate
+        }
+    }
+
+    return (
+        <div>
+            <div id={props.id} className='card mycard'>
+                <header id={props.id} className=' card-header text-center chdr'>{props.header}</header>
+                <div className='card-body'>
+                    {!props.isNewTask ?
+                        (
+                            <div>
+                                <div>
+                                    <button onClick={() => newTask()}>Add new task +</button>
+                                </div>
+                                {props.tasks.slice(0).reverse().map(task => {
+                                    
+                                    if (props.header === task.status)
+
+                                        
+
+                                        return (
+                                            <Task
+                                                key={task.id}
+                                                taskId={task.id}
+                                                description={task}
+                                                projectId={props.projectId}
+                                                userId={props.user.id}
+                                                loadTasks={props.loadTasks}
+                                                newDate={formatDate(task.dueDate)}
+                                                // tasks={this.state.divCount}
+                                                />
+>>>>>>> 108a157630ee21458e65cf3338684c4be6e220c8
 
     render() {
         return (

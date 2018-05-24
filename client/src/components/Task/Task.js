@@ -53,6 +53,10 @@ class Task extends Component{
         Users: [],
         userId: "",
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 108a157630ee21458e65cf3338684c4be6e220c8
     getComments = () => {
         API.getTaskComments(this.props.taskId)
         .then(res=>{
@@ -136,7 +140,8 @@ class Task extends Component{
                         comments={this.state.comments}
                         Users={this.state.Users}
                         description={this.state.description}
-                        onClickSubmit={this.onClickSubmit} />
+                        onClickSubmit={this.onClickSubmit}
+                        date={this.props.newDate} />
 
 
 
@@ -148,7 +153,14 @@ class Task extends Component{
                 <div>
                     <a onClick={this.modalPopup}>
                         <div id={this.props.id} className="card">
+<<<<<<< HEAD
                             <strong>{this.state.taskName}</strong>
+=======
+                            <div>
+                                <strong>{this.state.taskName}</strong>
+                                <p className="float-right">{this.props.newDate}</p>
+                            </div>
+>>>>>>> 108a157630ee21458e65cf3338684c4be6e220c8
                         </div>
                     </a>
                 
@@ -165,7 +177,8 @@ class Task extends Component{
                                comments={this.state.comments}
                                Users={this.state.Users}
                                description={this.state.description}
-                               onClickSubmit={this.onClickSubmit} />
+                               onClickSubmit={this.onClickSubmit}
+                               date={this.props.newDate} />
                     </div>
                </div> 
             )
@@ -173,7 +186,7 @@ class Task extends Component{
     }
 }
 
-const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect, handleInputChange, modalPopup, comments, Users, description, onClickSubmit}) => {
+const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect, handleInputChange, modalPopup, comments, Users, description, onClickSubmit, date}) => {
     return (
         <Modal isOpen={show}>
             <form onSubmit={onSubmit}>
@@ -227,7 +240,7 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     </select>
                     <br/>
                     <br />
-                    <div>Due Date:</div>
+                    <div>Due Date: {date}</div>
                     <h3>Due Date</h3>
                     <input onChange={handleInputChange} name="dueDate" type="date"/>
                     
