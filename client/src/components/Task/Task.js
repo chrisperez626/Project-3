@@ -232,7 +232,7 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                         <option selected='selected'>Choose User</option>
                         {Users.map(user => {
                             return (
-                                <option value={user.id}>{user.firstname}</option>
+                                <option key={user.id} value={user.id}>{user.firstname}</option>
                             )
                         })}
                     </select>
