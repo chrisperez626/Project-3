@@ -69,18 +69,18 @@ class App extends Component {
      <Route exact path="/" render={() => <Main  loggedIn={this.state.loggedIn}
                                                 logout={this.handleLogout}
                                                 user={this.state.user} 
-                                                mastHeadContent={<MainMastDetails loggedIn={this.state.loggedIn} logout={this.handleLogout}/>} 
+                                                mastHeadContent={<MainMastDetails />} 
                                                 mainContent={this.state.loggedIn ? 
                                                   <Welcome loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user} /> 
                                                   : <MainContentDetails  />}/>} />
 
 
     <Route exact path="/signup" render={() => <Main
-                                                mastHeadContent={<MainMastDetails loggedIn={this.state.loggedIn} logout={this.handleLogout}/>} 
+                                                mastHeadContent={<MainMastDetails />} 
                                                 mainContent={<SignupForm />}/>} />
 
     <Route exact path="/login" render={() => <Main
-                                                mastHeadContent={<MainMastDetails loggedIn={this.state.loggedIn} logout={this.handleLogout}/>} 
+                                                mastHeadContent={<MainMastDetails />} 
                                                 mainContent={<Login setUser={this.setUser} />} />}/>
 
     {/* <Route exact path="/welcome" render={() => <Main
@@ -88,16 +88,17 @@ class App extends Component {
                                                 mainContent={<Welcome loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user} />} />}/> */}
 
     <Route exact path="/whiteboard" render={() => <Main
-                                                mastHeadContent={<WhiteboardMastDetails loggedIn={this.state.loggedIn} logout={this.handleLogout}/>} 
+                                                mastHeadContent={<WhiteboardMastDetails />} 
+
                                                 mainContent={<Whiteboard loggedIn={this.state.loggedIn} logout={this.handleLogout}/>}/>} />
 
     <Route exact path="/profile" render={() => <Main
-                                                mastHeadContent={<MainMastDetails loggedIn={this.state.loggedIn} logout={this.handleLogout}/>} 
+                                                mastHeadContent={<MainMastDetails />} 
                                                 mainContent={<Profile />}/>} />
 
 
     <Route path="/projectpage/:projectId" render={(props) => <Main
-                                                mastHeadContent={<MainMastDetails loggedIn={this.state.loggedIn} logout={this.handleLogout}/>} 
+                                                mastHeadContent={<MainMastDetails />} 
                                                 mainContent={<ProjectPage projectId={props.match.params.projectId} loggedIn={this.state.loggedIn} logout={this.handleLogout} user={this.state.user} />} />}/>
 
     <Footer loggedIn={this.state.loggedIn} logout={this.handleLogout} />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import API from "../../utils/API";
-import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from "mdbreact";
+import { Modal, Button, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import Task from "../Task";
 
 const styles = {
@@ -48,13 +48,6 @@ const styles = {
     },
     create:{
         paddingTop:"215px"
-    },
-    modalHeader:{
-    backgroundColor: "indianred",
-    color: "white",
-    fontSize:"8px",
-    fontWeight:"bold",
-    height:"40px"
     }
 
 
@@ -231,7 +224,7 @@ class Welcome extends Component {
                                                 
                         <Modal isOpen={this.state.updateModal} >
                             <form onSubmit={this.handleFormUpdate} data-id={this.state.projectId} >
-                                <ModalHeader style={styles.modalHeader}>Update Project Name</ModalHeader>
+                                <ModalHeader>Update Project Name</ModalHeader>
                                 <ModalBody>
                                     <div className="row">
                                         <div className="form-group col-md-6">
@@ -256,7 +249,7 @@ class Welcome extends Component {
                 <div>
                     <Modal isOpen={this.state.createModal}>
                         <form onSubmit={this.handleFormSubmit}>
-                            <ModalHeader style={styles.modalHeader}>Project Name</ModalHeader>
+                            <ModalHeader>Project Name</ModalHeader>
                             <ModalBody>
                                 <div className="row">
                                     <div className="form-group col-md-6">

@@ -12,8 +12,7 @@ const styles={
     padding:"0px",
     textAlign:"center",
     paddingLeft:"3px",
-    paddingTop:"2px",
-    backgroundColor:"#fdcc52"
+    paddingTop:"2px"
   },
   btnNav:{
     paddingTop:"0px"

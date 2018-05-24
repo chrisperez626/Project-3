@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom';
 import './Task.css';
 import { Modal, Button, ModalHeader, ModalBody, ModalFooter, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from "reactstrap";
 import API from '../../utils/API'
@@ -52,16 +51,8 @@ class Task extends Component{
         welcomePage: this.props.welcomePage,
         comment: "",
         Users: [],
-        userId: this.props.userId,
-        loadTasks: this.props.loadTasks,
-        dueDate: "2018-05-31"
+        userId: "",
     }
-    formatDueDate = () => {
-        const newDate = this.state.dueDate.split(/\s*-\s*/)
-        const dateFormat = newDate[1] + "-" + newDate[2];
-        console.log(dateFormat)
-    }
-
     getComments = () => {
         API.getTaskComments(this.props.taskId)
         .then(res=>{
@@ -110,14 +101,7 @@ class Task extends Component{
     }
 
     onSubmit = event =>{
-        event.preventDefault()
-        API.updateTask(this.props.taskId, {taskname: this.state.taskName, status: this.state.status, dueDate: this.state.dueDate,description: this.state.description, UserId: this.state.userId, ProjectId: this.props.projectId})
-        .then(()=> {
-            this.props.loadTasks()
-        })
-        .catch(err => console.log(err))
-        this.setState({modal: !this.state.modal})
-        // this.props.loadTasks()
+        API.updateTask(this.props.taskId, {taskname: this.state.taskName, status: this.state.status, dueDate: this.state.dueDate,description: this.state.description, UserId: "1", ProjectId: "1"})
     }
 
     onClickSubmit = event =>{
@@ -125,7 +109,6 @@ class Task extends Component{
         API.saveComment({comment: this.state.comment, TaskId: this.props.taskId})
         .then(res=>this.getComments())
         .catch(err => console.log(err))
-        this.setState({welcomePage: false})
     }
 
 
@@ -166,7 +149,6 @@ class Task extends Component{
                     <a onClick={this.modalPopup}>
                         <div id={this.props.id} className="card">
                             <strong>{this.state.taskName}</strong>
-                            <p>{this.props.newDate}</p>
                         </div>
                     </a>
                 
@@ -235,11 +217,11 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     <br />
                     <br />
                     <h3>Assign Task</h3>
-                    <select  onChange={handleInputChange} name="userId" className="dropdown">
+                    <select placeholder="mook" onChange={this.handleInputChange} name="userId" className="dropdown">
                         <option selected='selected'>Choose User</option>
                         {Users.map(user => {
                             return (
-                                <option key={user.id} value={user.id}>{user.firstname}</option>
+                                <option value={user.id}>{user.firstname}</option>
                             )
                         })}
                     </select>

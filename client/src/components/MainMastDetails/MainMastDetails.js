@@ -5,12 +5,11 @@ import "./MainMastDetails.css";
 
 
 
-const MainMastDetails = ({loggedIn, logout}) => {
+const MainMastDetails = () => {
     return (
   
       <div className="container-fluid">
         <div className="row">
-        {!loggedIn ? (
           <div className="col-8 txtcol">
               <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   THE PROJECT MANAGER MAKES IT EASY...."</h1>
               <br></br>
@@ -18,17 +17,8 @@ const MainMastDetails = ({loggedIn, logout}) => {
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGNUP</Link>
               <a>OR</a>
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/login">LOGIN</Link>
-              
           </div>
-          ):(
-            <div className="col-8 txtcol">
-              <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   THE PROJECT MANAGER MAKES IT EASY...."</h1>
-              {/* <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGNUP</Link>
-              <a>OR</a>
-              <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/login">LOGIN</Link>
-               */}
-          </div>
-          )}
+
           <div className="col-4 mastimgcol">
                     <img src={require("../../img/team.jpg")} className="img-fluid mastimg" alt={"pm"}/>
                   </div>

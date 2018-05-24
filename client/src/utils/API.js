@@ -32,6 +32,7 @@ export default {
     return axios.get("/api/projects/"+id);
   },
   updateProject: function(id,projectData){
+    console.log("update project API", projectData.id);
     return axios.put("/api/projects/"+id, projectData);
   },
   deleteProject: function(id){
@@ -44,6 +45,7 @@ export default {
     return axios.get("/api/usertasks/"+id);
   },
   getProjectTask: function(id){
+    console.log("inside getProjectTask:", id);
     return axios.get("/api/projecttasks/"+id)
   },
   saveTask: function(taskData){

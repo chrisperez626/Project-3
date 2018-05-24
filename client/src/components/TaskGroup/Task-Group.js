@@ -5,73 +5,96 @@ import Task from '../Task';
 
 
 
-const TaskGroup = props => {
+class TaskGroup extends Component {
 
-    const newTask = () => {
-        props.newTask(props.id)
+    state = {
+        NewTask: false,
+        divCount: [],
+        taskName: ""
     }
 
-    return (
-        <div>
-            <div id={props.id} className='card mycard'>
-                <header id={props.id} className=' card-header text-center chdr'>{props.header}</header>
-                <div className='card-body'>
-                    {!props.isNewTask ?
-                        (
-                            <div>
+    loadTasks = () =>{
+        
+        API.getProjectTask(this.props.projectId)
+        .then(res => {
+            this.setState({ divCount: res.data})
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+    componentDidMount = () => {
+        this.loadTasks()
+        
+    }
+
+    newTask = () => {
+        this.setState({ NewTask: !this.state.NewTask })
+
+    }
+
+    submitTask = event => {
+        // event.preventDefault()
+        this.setState({ NewTask: !this.state.NewTask })
+        API.saveTask({taskname: this.state.taskName, status: this.props.header, UserId: this.props.user.id, ProjectId: this.props.projectId})
+        .then(data=>{
+            this.loadTasks()
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({ taskName: value });
+    }
+
+    render() {
+        return (
+            <div>
+                <div id={this.props.id} className='card mycard'>
+                    <header id={this.props.id} className=' card-header text-center chdr'>{this.props.header}</header>
+                    <div className='card-body'>
+                        {!this.state.NewTask ?
+                            (
                                 <div>
-                                    <button onClick={() => newTask()}>Add new task +</button>
-                                </div>
-                                {props.tasks.slice(0).reverse().map(task => {
-                                    if(task.dueDate){
-                                        const dateArray = task.dueDate.split(/\s*-\s*/);
-                                        console.log(dateArray)
-                                        const day = dateArray[2].split(/\s*T\s*/);
-                                        console.log(day)
-                                        const newDate = dateArray[1] + "-" + day[0];
-                                        console.log(newDate)
-                                        // return newDate
-                                    }
-                                    
+                                    <div>
+                                        <button onClick={() => this.newTask()}>Add new task +</button>
+                                    </div>
+                                    {this.state.divCount.slice(0).reverse().map(task => {
+                                        if (this.props.header === task.status)
+                                            return (
+                                                <Task
+                                                    key={task.id}
+                                                    taskId={task.id}
+                                                    description={task} />
 
-                                    if (props.header === task.status)
-
-                                        return (
-                                            <Task
-                                                key={task.id}
-                                                taskId={task.id}
-                                                description={task}
-                                                projectId={props.projectId}
-                                                userId={props.user.id}
-                                                loadTasks={props.loadTasks}
-                                                newDate={newDate}
-                                                // tasks={this.state.divCount}
-                                                />
-
-                                        )
-
+                                            )
+                                            
+                                        }
                                         
-                                    }
-                                    
-                                )}
-                            </div>
-                        )
-                        :
-                        (
-                            <div>
-                                <form onSubmit={(event) => props.submitTask(event, props.id)}>
-                                    <textarea name={`newTask${props.id}Name`} value={props.value} placeholder='Add new task here' onChange={props.handleInputChange}/>
-                                    <br/>
-                                    <button type='submit'>Add Task</button>
-                                    <button onClick={newTask}>Cancel</button>
-                                </form>
-                            </div>
-                        )
-                    }
+                                    )}
+                                </div>
+                            )
+                            :
+                            (
+                                <div>
+                                    <form onSubmit={this.submitTask}>
+                                        <textarea id='newTask' placeholder='Add new task here' onChange={this.handleInputChange}/>
+                                        <br/>
+                                        <button type='submit'>Add Task</button>
+                                        <button onClick={this.newTask}>Cancel</button>
+                                    </form>
+                                </div>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        )
+    }
+
 }
 
 export default TaskGroup;

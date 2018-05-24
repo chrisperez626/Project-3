@@ -241,7 +241,7 @@ export default class extends Component {
       </div>
       
           <div className="col-1 btnscol">  
-          <button className=" clearbtn wbbtn express-btn btn btn-primary btn-xl rounded-pill mt-5"
+          <button className="clearbtn" className="wbbtn express-btn btn btn-primary btn-xl rounded-pill mt-5"
 
             onClick={() => {
               this.clear();
