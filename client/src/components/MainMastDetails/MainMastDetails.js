@@ -12,7 +12,7 @@ const MainMastDetails = ({loggedIn, logout}) => {
         <div className="row">
         {!loggedIn ? (
           <div className="col-8 txtcol">
-              <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   THE PROJECT MANAGER MAKES IT EASY...."</h1>
+              <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   SYNERGY MAKES IT EASY...."</h1>
               <br></br>
               <br></br>
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGNUP</Link>
@@ -22,7 +22,7 @@ const MainMastDetails = ({loggedIn, logout}) => {
           </div>
           ):(
             <div className="col-8 txtcol">
-              <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   THE PROJECT MANAGER MAKES IT EASY...."</h1>
+              <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   SYNERGY MAKES IT EASY...."</h1>
               {/* <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGNUP</Link>
               <a>OR</a>
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/login">LOGIN</Link>
