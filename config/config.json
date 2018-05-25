@@ -5,7 +5,7 @@
     "database": "projectmanagementdb",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "port": 8889
+    "port": 3306
   },
   "test": {
     "username": "root",
@@ -19,6 +19,7 @@
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
+    "user_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
