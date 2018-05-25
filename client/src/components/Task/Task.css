@@ -17,5 +17,10 @@ strong {
 
 .descbox
 {
-    margin-left: 5px;
+    width:100%;
+    height:70px;
+}
+
+.updateTask{
+    width:100%
 }
