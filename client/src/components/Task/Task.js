@@ -37,7 +37,11 @@ const styles = {
     },
     projectLbl:{
         paddingRight:"10px"
+    },
+    hr:{
+        width:"100%"
     }
+
 }
 
 class Task extends Component{
@@ -199,7 +203,7 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     <Button id="x-button"color="danger" onClick={modalPopup}>X</Button>
                 </ModalHeader>
                 <ModalBody>
-                    <h2>Update Status</h2>
+                    <div><strong>Update Status</strong></div>
                     <Dropdown isOpen={dropdown} toggle={toggle}>
                         <DropdownToggle caret>
                             {status}   
@@ -212,28 +216,28 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                         </DropdownMenu>
                     </Dropdown>
                     <br/>
-                    <h3 >Update Task Name</h3>
-                    <input name="taskName" onChange={handleInputChange} type="text" defaultValue={taskName}/>
+                    <div><strong>Update Task Name</strong></div>
+                    <input className="updateTask" name="taskName" onChange={handleInputChange} type="text" defaultValue={taskName}/>
                     <br/>
-                    <h3>Description</h3>
-                    <div className='card text-center descbox'><strong>{description}</strong></div>
-                    <textarea name="description" onChange={handleInputChange}/>
+                    <div><strong>Description</strong></div>
+                    <div className='text-left'>{description}</div>
+                    <textarea className="descbox" name="description" onChange={handleInputChange}/>
                     <br/>
-                    <h4>Comments</h4>
+                    <div><strong>Comments</strong></div>
 
                     {comments.map(comment =>{
                         return (
-                            <div className="card">{comment.comment}</div>
+                                <div style={styles.hr}>{comment.comment}</div>
                         )
                         
                     })}
-                    <input name="comment" onChange={handleInputChange} type="text" />
+                    <input name="comment" className="descbox" onChange={handleInputChange} type="text" />
                     <br />
                     <br />
-                    <Button type="submit" onClick={onClickSubmit}>Submit</Button>
+                    <Button type="submit" onClick={onClickSubmit}>Save</Button>
                     <br />
                     <br />
-                    <h3>Assign Task</h3>
+                    <div><strong>Assign Task</strong></div>
                     <select  onChange={handleInputChange} name="userId" className="dropdown">
                         <option selected='selected'>Choose User</option>
                         {Users.map(user => {
@@ -244,9 +248,8 @@ const TaskModal = ({show, onSubmit, taskName, dropdown, toggle, status, onSelect
                     </select>
                     <br/>
                     <br />
-                    <div>Due Date: {date}</div>
-                    <h3>Due Date</h3>
-                    <input onChange={handleInputChange} name="dueDate" type="date"/>
+                    <div><strong>Due Date: {date}</strong></div>
+                    <input className="updateTask" onChange={handleInputChange} name="dueDate" type="date"/>
                     
                 </ModalBody>
                 <ModalFooter>
