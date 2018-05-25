@@ -12,8 +12,7 @@ const MainMastDetails = ({loggedIn, logout}) => {
         <div className="row">
         {!loggedIn ? (
           <div className="col-8 txtcol">
-              <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   SYNERGY MAKES IT EASY...."</h1>
-              <br></br>
+              <h1><strong>"NEW TO CODING OR TEAM CODING PROJECTS?   THE SYNERGY - PROJECT MANAGER MAKES IT EASY...."</strong></h1>
               <br></br>
               <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGNUP</Link>
               <a>OR</a>
@@ -22,11 +21,8 @@ const MainMastDetails = ({loggedIn, logout}) => {
           </div>
           ):(
             <div className="col-8 txtcol">
-              <h1>"NEW TO CODING OR TEAM CODING PROJECTS?   SYNERGY MAKES IT EASY...."</h1>
-              {/* <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/Signup">SIGNUP</Link>
-              <a>OR</a>
-              <Link className="btn btn-outline btn-xl js-scroll-trigger" to="/login">LOGIN</Link>
-               */}
+              <h1>"NEW TO CODING OR TEAM CODING PROJECTS?</h1>  <h1> THE SYNERGY - PROJECT MANAGER MAKES IT EASY...."</h1>
+            
           </div>
           )}
           <div className="col-4 mastimgcol">

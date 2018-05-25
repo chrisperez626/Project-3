@@ -14,3 +14,8 @@ strong {
 #x-button{
     float: right;
 }
+
+.descbox
+{
+    margin-left: 5px;
+}

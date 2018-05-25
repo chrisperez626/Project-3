@@ -548,3 +548,14 @@ width: 400px;
 {
   padding-top: 5px;
 }
+
+.descbox
+{
+    margin-left: 0px;
+}
+
+.taskshdr
+{
+    text-align: center; 
+    color:white;
+}

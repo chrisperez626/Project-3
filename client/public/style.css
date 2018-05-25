@@ -439,8 +439,10 @@ footer ul li a:hover, footer ul li a:focus, footer ul li a:active, footer ul li 
 
 .mastimg
 {
-    min-width: 200%;
-    margin-left: -75px;
+  min-width: 150%;
+  margin-left: 0px;
+  margin-top: 30%;
+  border-radius: 8px;
 }
 
 .loginbtn
