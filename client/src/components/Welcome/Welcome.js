@@ -187,12 +187,12 @@ class Welcome extends Component {
                          ) : (
                             <div style={styles.grid}>
                 
-                                <div className="card taskcard" style={styles.cardStyle}>
+                                {/* <div className="card taskcard" style={styles.cardStyle}>
                                 <img className="card-img-top" src={require("../../img/shared-task.jpg")} alt="Shared task"/>
                                 <h6 className="card-block" style={styles.preProject} >
                                 Create Projects and Tasks
                                 </h6>
-                                </div>
+                                </div> */}
                             </div>
                             )} 
                         </div>   
